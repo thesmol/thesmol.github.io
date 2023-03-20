@@ -1,0 +1,16 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.nav-item:hover{
+    background-color:#eee;
+}
+
+.nav-menu:hover > .bi {
+    transform: scale(1.2); /* увеличение изображения */
+  }
+  
+.nav-menu:hover {
+    opacity: 0.7;
+  }
