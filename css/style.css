@@ -2,10 +2,14 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/* header stuff */
 .user_pages{
   font-size: 18px;
 }
 
+body .text-dark, body .text-black, body .link-dark {
+  color: #505050!important;
+}
 .nav-item{
   font-size: 14px;
 }
@@ -22,3 +26,7 @@
 .nav-menu:hover {
     opacity: 0.7;
   }
+
+.nav-item .bi {
+  fill: red;
+}
