@@ -2,11 +2,19 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.user_pages{
+  font-size: 18px;
+}
 
+.nav-item{
+  font-size: 14px;
+}
 .nav-item:hover{
     background-color:#eee;
 }
-
+.nav-menu.nav-link {
+  font-size: 14px;
+}
 .nav-menu:hover > .bi {
     transform: scale(1.2); /* увеличение изображения */
   }
