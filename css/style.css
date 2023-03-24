@@ -11,14 +11,12 @@ body .text-dark, body .text-black, body .link-dark {
   font-size: 18px;
 }
 
-
 .nav-menu.nav-link, .nav-item {
   font-size: 14px;
 }
 .nav-item:hover{
     background-color:#eee;
 }
-
 
 .nav-menu:hover > .bi {
     transform: scale(1.2); /* увеличение изображения */
@@ -27,6 +25,7 @@ body .text-dark, body .text-black, body .link-dark {
 .nav-menu:hover {
     opacity: 0.7;
   }
+
 
 /* main stuff */
 .custom-bg {
@@ -85,4 +84,7 @@ div span strong{
 
 ul.sch-m {
   --bs-nav-link-padding-x: 0.2rem;
+
+.nav-item .bi {
+  fill: red;
 }
