@@ -7,7 +7,7 @@ body .text-dark, body .text-black, body .link-dark {
 }
 
 /* header stuff */
-.user_pages{
+.user-pages{
   font-size: 18px;
 }
 
@@ -74,7 +74,7 @@ div span{
   display: block;
 }
 
-div span strong{
+main div span strong{
   font-size: 18px;
 }
 
