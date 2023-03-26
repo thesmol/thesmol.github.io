@@ -116,3 +116,13 @@ form .btn-primary{
   box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
 }
 
+/* left column */
+
+.col-md-9 .mb-4.pt-5.pb-2.px-4{
+  font-size: 14px;
+}
+
+.col-md-9 .d-flex.mb-3{
+  font-size: 16px;
+}
+
