@@ -26,6 +26,9 @@ body .text-dark, body .text-black, body .link-dark {
     opacity: 0.7;
   }
 
+.active{
+  background-color:#eee;
+}
 
 /* main stuff */
 .custom-bg {
