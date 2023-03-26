@@ -75,8 +75,8 @@ div span{
   display: block;
 }
 
-main div span strong{
-  font-size: 18px;
+.profile-nm{
+  font-size: 18px!important;
 }
 
 .col-md-7 span {
