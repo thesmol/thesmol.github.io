@@ -26,6 +26,9 @@ body .text-dark, body .text-black, body .link-dark {
     opacity: 0.7;
   }
 
+.active{
+  background-color:#eee;
+}
 
 /* main stuff */
 .custom-bg {
@@ -85,5 +88,41 @@ div span{
 
 ul.sch-m {
   --bs-nav-link-padding-x: 0.2rem;
+}
+
+.slide-btn{
+  font-size: 14px;
+}
+
+.btn.btn-toggle.justify-content-between {
+  text-align: start ;
+}
+
+form .btn-primary{
+  --bs-btn-bg: #5095EC;
+  font-size: 14px;
+}
+
+.form-control-sm{
+  border-color: #D3D8DE;
+  min-height: 10em!important;
+}
+
+.form-control-sm:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+
+/* left column */
+
+.col-md-9 .mb-4.pt-5.pb-2.px-4{
+  font-size: 14px;
+}
+
+.col-md-9 .d-flex.mb-3{
+  font-size: 16px;
 }
 
