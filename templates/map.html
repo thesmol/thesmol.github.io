@@ -92,7 +92,23 @@
     </header>
 
     <main class = "container bg-light">
-        <div id="map" class="bg-light px-2 py-4 d-flex justify-content-center align-items-center">
+      <div class="container d-flex flex-wrap align-items-center justify-content-center pt-2">
+        <span class="user-pages me-lg-auto text-dark">Basic map</span>
+
+        <ul class="my-2 justify-content-between me-0 align-items-center">
+          <li class="btn border-0">
+                <image class="bi d-block mx-auto" width="14" height="9" src ="..\images\icons\arrow_down.svg">
+          </li>
+          <li class="btn border-0">
+                <image class="bi d-block mx-auto" width="17" height="17" src ="..\images\icons\Update.svg">
+          </li>
+          <li class="btn border-0">
+                <image class="bi d-block mx-auto" width="17" height="17" src ="..\images\icons\Close.svg">
+          </li>
+        </ul>
+      </div>
+
+        <div id="map" class="bg-light px-2 py-3 d-flex justify-content-center align-items-center">
           <div id="loader" class="text-center">
             <div class="spinner-border" role="status"></div>
           </div>  

@@ -135,3 +135,7 @@ form .btn-primary{
 .shut-the-loader{
   display: none!important;
 }
+
+.btn:hover > .bi {
+  transform: scale(1.2); /* увеличение изображения */
+}
