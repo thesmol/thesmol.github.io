@@ -126,3 +126,12 @@ form .btn-primary{
   font-size: 16px;
 }
 
+/* map */
+
+#map{
+  min-height: 43em; 
+}
+
+.shut-the-loader{
+  display: none!important;
+}
