@@ -10,7 +10,7 @@ $(document).ready(function() {
       dataType: 'html',
       success: function(data) {
         // обновляем содержимое страницы
-        $('main').html(data);
+        $('body').html(data);
         console.log('suc');
       }
     });
