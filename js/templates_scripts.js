@@ -1,3 +1,24 @@
+// general
+$(document).ready(function() {
+  $('ul.nav a').click(function(e) {
+    console.log('no suc');
+    e.preventDefault(); // отменяем стандартное действие ссылки
+    var url = $(this).attr('href'); // получаем URL страницы
+    // отправляем AJAX-запрос на сервер
+    $.ajax({
+      url: url,
+      dataType: 'html',
+      success: function(data) {
+        // обновляем содержимое страницы
+        $('main').html(data);
+        console.log('suc');
+      }
+    });
+  });
+});
+
+
+
 // index
 function highlightCurrentPage() {
     var url = window.location;
