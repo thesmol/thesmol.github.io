@@ -20,57 +20,75 @@
 // });
 
 $(document).ready(function() {
-highlightCurrentPage();
   // получаем ссылки на элементы меню
-var menuLinks = document.querySelectorAll('.nav-link');
+  var menuLinks = document.querySelectorAll('.nav-link');
 
-// обрабатываем клик по каждой ссылке
-menuLinks.forEach(function(link) {
-  link.addEventListener('click', function(e) {
-    e.preventDefault(); // отменяем стандартное действие ссылки
+  // обрабатываем клик по каждой ссылке
+  menuLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // отменяем стандартное действие ссылки
 
-    // отправляем AJAX-запрос на сервер
+      // отправляем AJAX-запрос на сервер
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', link.href);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // если запрос успешен, заменяем содержимое страницы на полученный HTML-код
+          var content = document.querySelector('body');
+          content.innerHTML = xhr.responseText;
+
+          // подсвечиваем текущую страницу
+          highlightCurrentPage();
+
+          // меняем URL страницы
+          history.pushState(null, null, link.href);
+        }
+      };
+      xhr.send();
+    });
+  });
+
+  // обрабатываем событие изменения URL страницы
+  window.addEventListener('popstate', function(e) {
+    // отправляем AJAX-запрос на сервер с новым URL
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', link.href);
+    xhr.open('GET', location.href);
     xhr.onload = function() {
       if (xhr.status === 200) {
         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код
-        highlightCurrentPage();
         var content = document.querySelector('body');
         content.innerHTML = xhr.responseText;
 
-        // меняем URL страницы
-        history.pushState(null, null, link.href);
+        // подсвечиваем текущую страницу
+        highlightCurrentPage();
       }
     };
     xhr.send();
   });
-});
 
-// обрабатываем событие изменения URL страницы
-window.addEventListener('popstate', function(e) {
-  // отправляем AJAX-запрос на сервер с новым URL
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', location.href);
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      // если запрос успешен, заменяем содержимое страницы на полученный HTML-код
-      highlightCurrentPage();
-      var content = document.querySelector('body');
-      content.innerHTML = xhr.responseText;
-    }
-  };
-  xhr.send();
-});
-});
-
-function highlightCurrentPage() {
-    var url = window.location;
-    $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
-    $('ul.nav a').filter(function() {
-       return this.href == url;
-    }).parent().addClass('active');
+  function highlightCurrentPage() {
+    // подсвечиваем текущую страницу
+    var currentPage = window.location.pathname.split('/').pop();
+    var menuLinks = document.querySelectorAll('.nav-link');
+    menuLinks.forEach(function(link) {
+      var linkHref = link.getAttribute('href').split('/').pop();
+      if (linkHref === currentPage) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
   }
+});
+
+
+// function highlightCurrentPage() {
+//     var url = window.location;
+//     $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+//     $('ul.nav a').filter(function() {
+//        return this.href == url;
+//     }).parent().addClass('active');
+//   }
   
 // $(document).ready(function () {
 // highlightCurrentPage();
