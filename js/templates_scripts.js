@@ -20,6 +20,7 @@
 // });
 
 $(document).ready(function() {
+highlightCurrentPage();
   // получаем ссылки на элементы меню
 var menuLinks = document.querySelectorAll('.nav-link');
 
@@ -34,6 +35,7 @@ menuLinks.forEach(function(link) {
     xhr.onload = function() {
       if (xhr.status === 200) {
         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код
+        highlightCurrentPage();
         var content = document.querySelector('body');
         content.innerHTML = xhr.responseText;
 
@@ -53,6 +55,7 @@ window.addEventListener('popstate', function(e) {
   xhr.onload = function() {
     if (xhr.status === 200) {
       // если запрос успешен, заменяем содержимое страницы на полученный HTML-код
+      highlightCurrentPage();
       var content = document.querySelector('body');
       content.innerHTML = xhr.responseText;
     }
@@ -61,9 +64,6 @@ window.addEventListener('popstate', function(e) {
 });
 });
 
-
-
-// index
 function highlightCurrentPage() {
     var url = window.location;
     $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
@@ -72,9 +72,9 @@ function highlightCurrentPage() {
     }).parent().addClass('active');
   }
   
-$(document).ready(function () {
-highlightCurrentPage();
-});
+// $(document).ready(function () {
+// highlightCurrentPage();
+// });
 
 //map
 // document.cookie = "cookieName=cookieValue; SameSite=Secure; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT";
