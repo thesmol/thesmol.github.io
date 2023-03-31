@@ -21,7 +21,7 @@
 
 $(document).ready(function() {
   // получаем ссылки на элементы меню
-  var menuLinks = document.querySelectorAll('.nav-link');
+  var menuLinks = document.querySelectorAll('.nav-item');
 
   // обрабатываем клик по каждой ссылке
   menuLinks.forEach(function(link) {
@@ -65,30 +65,16 @@ $(document).ready(function() {
     };
     xhr.send();
   });
-
-  function highlightCurrentPage() {
-    // подсвечиваем текущую страницу
-    var currentPage = window.location.pathname.split('/').pop();
-    var menuLinks = document.querySelectorAll('.nav-link');
-    menuLinks.forEach(function(link) {
-      var linkHref = link.getAttribute('href').split('/').pop();
-      if (linkHref === currentPage) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-  }
 });
 
 
-// function highlightCurrentPage() {
-//     var url = window.location;
-//     $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
-//     $('ul.nav a').filter(function() {
-//        return this.href == url;
-//     }).parent().addClass('active');
-//   }
+function highlightCurrentPage() {
+  var url = window.location;
+  $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+  $('ul.nav a').filter(function() {
+      return this.href == url;
+  }).parent().addClass('active');
+}
   
 // $(document).ready(function () {
 // highlightCurrentPage();
