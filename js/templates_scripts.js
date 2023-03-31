@@ -21,7 +21,7 @@
 
 $(document).ready(function() { 
     // получаем ссылки на элементы меню 
-  var menuLinks = document.querySelectorAll('.nav-item'); 
+  var menuLinks = document.querySelectorAll('.nav-link'); 
    
   // обрабатываем клик по каждой ссылке 
   menuLinks.forEach(function(link) { 
