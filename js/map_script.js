@@ -1,5 +1,5 @@
 //map
-ymaps.ready(init);
+$ymaps.ready(init);
 
 function init() { 
 var map; 
