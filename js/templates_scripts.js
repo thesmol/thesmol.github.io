@@ -64,6 +64,8 @@ $(document).ready(function() {
         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
         var content = document.querySelector('html'); 
         content.innerHTML = xhr.responseText; 
+
+        highlightCurrentPage();
       } 
     }; 
     xhr.send(); 
