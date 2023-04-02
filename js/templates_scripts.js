@@ -46,7 +46,9 @@ $(document).ready(function() {
           content.innerHTML = xhr.responseText; 
           // меняем URL страницы 
           history.pushState(null, null, link.href); 
-          // highlightCurrentPage(); 
+          // перезагружаем скрипты
+          loadScripts();  
+          highlightCurrentPage(); 
         } 
       }; 
       xhr.send(); 
@@ -63,7 +65,7 @@ $(document).ready(function() {
         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
         var content = document.querySelector('html'); 
         content.innerHTML = xhr.responseText; 
-        // highlightCurrentPage(); 
+        highlightCurrentPage(); 
       } 
     }; 
     xhr.send(); 
@@ -77,6 +79,20 @@ function highlightCurrentPage() {
       return this.href == url;
   }).parent().addClass('active');
   console.log("подсветили")
+}
+
+function loadScripts() {  
+  // получаем все скрипты на странице  
+  var scripts = document.getElementsByTagName('script');  
+  // создаем новый скрипт для каждого существующего на странице  
+  for (var i = 0; i < scripts.length; i++) {  
+    var script = document.createElement('script');  
+    script.type = scripts[i].type;  
+    script.src = scripts[i].src;  
+    // добавляем новый скрипт на страницу и удаляем старый  
+    scripts[i].parentNode.insertBefore(script, scripts[i]);  
+    scripts[i].parentNode.removeChild(scripts[i]);  
+  }  
 }
   
 // $(document).ready(function () {
