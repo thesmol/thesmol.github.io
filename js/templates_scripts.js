@@ -46,7 +46,7 @@ $(document).ready(function() {
           content.innerHTML = xhr.responseText; 
           // меняем URL страницы 
           history.pushState(null, null, link.href); 
-          highlightCurrentPage(); 
+          // highlightCurrentPage(); 
         } 
       }; 
       xhr.send(); 
@@ -63,7 +63,7 @@ $(document).ready(function() {
         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
         var content = document.querySelector('html'); 
         content.innerHTML = xhr.responseText; 
-        highlightCurrentPage(); 
+        // highlightCurrentPage(); 
       } 
     }; 
     xhr.send(); 
