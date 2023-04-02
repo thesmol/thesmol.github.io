@@ -83,13 +83,13 @@ function highlightCurrentPage() {
 
 function loadScripts() {  
   // получаем все скрипты на странице  
-  var scripts = document.getElementsByName('page-script')[0];  
+  var scripts = document.querySelectorAll('.page-script');   
   // создаем новый скрипт для каждого существующего на странице  
   for (var i = 0; i < scripts.length; i++) {  
     var script = document.createElement('script');  
     script.type = scripts[i].type;  
     script.src = scripts[i].src; 
-    console.log(scripts[i].src); 
+    console.log("добавили"); 
     // добавляем новый скрипт на страницу и удаляем старый  
     scripts[i].parentNode.insertBefore(script, scripts[i]);  
     scripts[i].parentNode.removeChild(scripts[i]);  
