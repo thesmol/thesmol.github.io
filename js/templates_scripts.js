@@ -34,7 +34,7 @@ $(document).ready(function() {
       xhr.onload = function() { 
         if (xhr.status === 200) { 
           // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
-          var content = document.querySelector('body'); 
+          var content = document.querySelector('html'); 
           content.innerHTML = xhr.responseText; 
           // меняем URL страницы 
           history.pushState(null, null, link.href); 
@@ -53,7 +53,7 @@ $(document).ready(function() {
     xhr.onload = function() { 
       if (xhr.status === 200) { 
         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
-        var content = document.querySelector('body'); 
+        var content = document.querySelector('html'); 
         content.innerHTML = xhr.responseText; 
         highlightCurrentPage(); 
       } 
