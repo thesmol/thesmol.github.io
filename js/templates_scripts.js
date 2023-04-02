@@ -83,7 +83,7 @@ function highlightCurrentPage() {
 
 function loadScripts() {  
   // получаем все скрипты на странице  
-  var scripts = document.getElementsByTagName('script');  
+  var scripts = document.getElementsByName('page-script');  
   // создаем новый скрипт для каждого существующего на странице  
   for (var i = 0; i < scripts.length; i++) {  
     var script = document.createElement('script');  
