@@ -88,7 +88,8 @@ function loadScripts() {
   for (var i = 0; i < scripts.length; i++) {  
     var script = document.createElement('script');  
     script.type = scripts[i].type;  
-    script.src = scripts[i].src;  
+    script.src = scripts[i].src; 
+    console.log(scripts[i].src); 
     // добавляем новый скрипт на страницу и удаляем старый  
     scripts[i].parentNode.insertBefore(script, scripts[i]);  
     scripts[i].parentNode.removeChild(scripts[i]);  
