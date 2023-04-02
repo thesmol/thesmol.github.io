@@ -46,8 +46,7 @@ $(document).ready(function() {
           content.innerHTML = xhr.responseText; 
           // меняем URL страницы 
           history.pushState(null, null, link.href); 
-          // перезагружаем скрипты
-          loadScripts();  
+
           highlightCurrentPage(); 
         } 
       }; 
@@ -65,7 +64,6 @@ $(document).ready(function() {
         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
         var content = document.querySelector('html'); 
         content.innerHTML = xhr.responseText; 
-        highlightCurrentPage(); 
       } 
     }; 
     xhr.send(); 
@@ -81,20 +79,20 @@ function highlightCurrentPage() {
   console.log("подсветили")
 }
 
-function loadScripts() {  
-  // получаем все скрипты на странице  
-  var scripts = document.querySelectorAll('.page-script');   
-  // создаем новый скрипт для каждого существующего на странице  
-  for (var i = 0; i < scripts.length; i++) {  
-    var script = document.createElement('script');  
-    script.type = scripts[i].type;  
-    script.src = scripts[i].src; 
-    console.log("добавили"); 
-    // добавляем новый скрипт на страницу и удаляем старый  
-    scripts[i].parentNode.insertBefore(script, scripts[i]);  
-    scripts[i].parentNode.removeChild(scripts[i]);  
-  }  
-}
+// function loadScripts() {  
+//   // получаем все скрипты на странице  
+//   var scripts = document.querySelectorAll('.page-script');   
+//   // создаем новый скрипт для каждого существующего на странице  
+//   for (var i = 0; i < scripts.length; i++) {  
+//     var script = document.createElement('script');  
+//     script.type = scripts[i].type;  
+//     script.src = scripts[i].src; 
+//     console.log("добавили"); 
+//     // добавляем новый скрипт на страницу и удаляем старый  
+//     scripts[i].parentNode.insertBefore(script, scripts[i]);  
+//     scripts[i].parentNode.removeChild(scripts[i]);  
+//   }  
+// }
   
 // $(document).ready(function () {
 // highlightCurrentPage();
