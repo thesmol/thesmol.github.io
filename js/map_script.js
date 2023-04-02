@@ -1,5 +1,8 @@
 //map
-ymaps.ready(init);
+$(document).ready(function(){
+    init();
+})
+// ymaps.ready(init);
 
 function init() { 
 var map; 
