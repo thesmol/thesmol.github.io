@@ -27,6 +27,15 @@
 // });
 
 $(document).ready(function() { 
+  // устанавливаем начальное время для таймера
+  let startTime = localStorage.getItem('startTime');
+    if (!startTime) {
+    // если время еще не сохранено, сохраняем текущее время
+    startTime = Date.now();
+    localStorage.setItem('startTime', startTime);
+    };
+
+  // подсвеиваем элемент меню навигации, соотвествующий текущей странице
   highlightCurrentPage();
     // получаем ссылки на элементы меню 
   var menuLinks = document.querySelectorAll('.nav-link'); 
