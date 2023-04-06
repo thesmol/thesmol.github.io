@@ -10,46 +10,46 @@ $(document).ready(function() {
 
   // подсвеиваем элемент меню навигации, соотвествующий текущей странице
   highlightCurrentPage();
-    // получаем ссылки на элементы меню 
-  var menuLinks = document.querySelectorAll('.nav-link');
+  //   // получаем ссылки на элементы меню 
+  // var menuLinks = document.querySelectorAll('.nav-link');
 
-  // обрабатываем клик по каждой ссылке 
-  menuLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault(); // отменяем стандартное действие ссылки
+  // // обрабатываем клик по каждой ссылке 
+  // menuLinks.forEach(function(link) {
+  //   link.addEventListener('click', function(e) {
+  //     e.preventDefault(); // отменяем стандартное действие ссылки
   
-      // отправляем AJAX-запрос на сервер
-      $.ajax({
-        url: link.href,
-        method: 'GET',
-        success: function(data) {
-          // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
-          var content = $('html');
-          content.html(data);
-          // меняем URL страницы 
-          history.pushState(null, null, link.href);
+  //     // отправляем AJAX-запрос на сервер
+  //     $.ajax({
+  //       url: link.href,
+  //       method: 'GET',
+  //       success: function(data) {
+  //         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
+  //         var content = $('html');
+  //         content.html(data);
+  //         // меняем URL страницы 
+  //         history.pushState(null, null, link.href);
   
-          highlightCurrentPage();
-        }
-      });
-    });
-  });
+  //         highlightCurrentPage();
+  //       }
+  //     });
+  //   });
+  // });
   
-  // обрабатываем событие изменения URL страницы 
-  window.addEventListener('popstate', function(e) {
-    // отправляем AJAX-запрос на сервер с новым URL 
-    $.ajax({
-      url: location.href,
-      method: 'GET',
-      success: function(data) {
-        // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
-        var content = $('html');
-        content.html(data);
+  // // обрабатываем событие изменения URL страницы 
+  // window.addEventListener('popstate', function(e) {
+  //   // отправляем AJAX-запрос на сервер с новым URL 
+  //   $.ajax({
+  //     url: location.href,
+  //     method: 'GET',
+  //     success: function(data) {
+  //       // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
+  //       var content = $('html');
+  //       content.html(data);
   
-        highlightCurrentPage();
-      }
-    });
-  });
+  //       highlightCurrentPage();
+  //     }
+  //   });
+  // });
 });
 
 function highlightCurrentPage() {
