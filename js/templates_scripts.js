@@ -27,6 +27,33 @@
 // });
 
 $(document).ready(function() { 
+  document.cookie = "visited=true; SameSite=strict";
+  let startTime = Date.now();
+  let timeSpent = 0;
+
+  // получаем значение куки "timeSpent"
+  let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)timeSpent\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+  // если куки есть, берем из них значение времени
+  if (cookieValue) {
+      timeSpent = parseInt(cookieValue);
+      startTime = Date.now() - timeSpent;
+  }
+
+  // сохраняем текущее время в куки при закрытии страницы
+  window.addEventListener("beforeunload", function(event) {
+      
+      if (document.cookie.indexOf("visited") >= 0) {
+        document.cookie = "timeSpent=";
+        document.cookie = "visited=false";
+        console.log("User is leaving the website");
+      } else {
+        let timeSpent = Date.now() - startTime;
+        document.cookie = "timeSpent=" + timeSpent + "; SameSite=strict";
+      }
+  });
+
+  // подсвеиваем элемент меню навигации, соотвествующий текущей странице
   highlightCurrentPage();
     // получаем ссылки на элементы меню 
   var menuLinks = document.querySelectorAll('.nav-link'); 
