@@ -1,4 +1,5 @@
 // general
+document.cookie = "cookie_name=cookie_value; SameSite=strict";
 $(document).ready(function() { 
   // устанавливаем начальное время для таймера
   // let startTime = localStorage.getItem('startTime');
