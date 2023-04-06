@@ -1,12 +1,30 @@
 // general
 $(document).ready(function() { 
   // устанавливаем начальное время для таймера
-  let startTime = localStorage.getItem('startTime');
-    if (!startTime) {
-    // если время еще не сохранено, сохраняем текущее время
-    startTime = Date.now();
-    localStorage.setItem('startTime', startTime);
-    };
+  // let startTime = localStorage.getItem('startTime');
+  //   if (!startTime) {
+  //   // если время еще не сохранено, сохраняем текущее время
+  //   startTime = Date.now();
+  //   localStorage.setItem('startTime', startTime);
+  //   };
+
+  let startTime = Date.now();
+  let timeSpent = 0;
+
+  // получаем значение куки "timeSpent"
+  let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)timeSpent\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+  // если куки есть, берем из них значение времени
+  if (cookieValue) {
+      timeSpent = parseInt(cookieValue);
+      startTime = Date.now() - timeSpent;
+  }
+
+  // сохраняем текущее время в куки при закрытии страницы
+  window.addEventListener("beforeunload", function(event) {
+      let timeSpent = Date.now() - startTime;
+      document.cookie = "timeSpent=" + timeSpent;
+  });
 
   // подсвеиваем элемент меню навигации, соотвествующий текущей странице
   highlightCurrentPage();
