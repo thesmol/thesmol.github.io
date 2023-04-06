@@ -16,14 +16,15 @@ $(document).ready(function() {
   // сохраняем текущее время в куки при закрытии страницы
   window.addEventListener("beforeunload", function(event) {
       
-    if (document.cookie.indexOf("visited") >= 0) {
-      document.cookie = "timeSpent=";
-      document.cookie = "visited=false";
-      console.log("User is leaving the website");
-    } else {
-      let timeSpent = Date.now() - startTime;
-      document.cookie = "timeSpent=" + timeSpent + "; SameSite=strict";
-    }
+      if (document.cookie.indexOf("visited") >= 0) {
+        let timeSpent = Date.now() - startTime;
+        document.cookie = "timeSpent=" + timeSpent + "; SameSite=strict";
+        document.cookie = "visited=false";
+        console.log("User is leaving the website");
+      } else {
+        // User is refreshing the website
+        // Ignore the event
+      }
   });
 
   // подсвеиваем элемент меню навигации, соотвествующий текущей странице
