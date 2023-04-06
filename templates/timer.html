@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    
+    <link href = "..\css\style.css" rel = "stylesheet" type = "text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script class = "page-script" src="..\js\templates_scripts.js"></script>
+    <script class = "page-script" src="..\js\timer_script.js"></script>
+
+    <title>Таймер</title>
+</head>
+<body class = "custom-bg">
+    <header>
+        <div class="px-3 py-2 text-bg-white bg-light border-bottom">
+            <div class="container d-flex flex-wrap align-items-center justify-content-between">
+                <a href="#" class="d-flex align-items-center me-lg-auto text-dark text-decoration-none nav-menu">
+                    <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\arrow_back.svg">
+                    <span class="px-3 user-pages"><strong>User pages</strong> - Profile</span>
+                </a>
+      
+                <ul class="nav my-2 justify-content-center my-md-0 text-small">
+                  <li>
+                    <a href="#" class="nav-link text-black nav-menu">
+                        <image class="bi d-block mx-auto mb-1" width="17.47" height="18" src ="..\images\icons\statistic.svg">
+                      Statistic
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link text-black nav-menu">
+                        <image class="bi d-block mx-auto mb-1" width="18" height="18" src ="..\images\icons\invoices.svg">
+                      Invoices
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link text-black nav-menu">
+                        <image class="bi d-block mx-auto mb-1" width="14" height="18" src ="..\images\icons\shedule.svg">
+                      Shedule
+                    </a>
+                  </li>
+                </ul>
+              </div>
+        </div>
+
+       <nav class="bg-light border-bottom mb-4">
+            <div class="container d-flex flex-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item d-flex align-items-center px-2">
+                    <image class="bi d-block mx-auto" width="13.34" height="11.6" src ="..\images\icons\activity.svg">
+                    <a href="index.html" class="nav-link link-dark px-2">Activity</a>
+                </li>
+                <li class="nav-item d-flex align-items-center px-2">
+                    <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\map.svg">
+                    <a href="map.html" class="nav-link link-dark px-2">Map</a>
+                </li>
+                <li class="nav-item d-flex align-items-center px-2">
+                    <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\time.svg">
+                    <a href="timer.html" class="nav-link link-dark px-2">Time</a>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li class="nav-item d-flex align-items-center px-2">
+                    <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\notes.svg">
+                    <a href="#" class="nav-link link-dark px-2">Notes</a>
+                </li>
+                <li class="nav-item d-flex align-items-center px-2">
+                    <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\friends.svg">
+                    <a href="#" class="nav-link link-dark px-2">Friends</a>
+                </li>
+                <li class="nav-item d-flex align-items-center px-2">
+                    <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\images.svg">
+                    <a href="#" class="nav-link link-dark px-2">Photos</a>
+                </li>
+                <li class="nav-item d-flex align-items-center px-2">
+                    <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\settings.svg">
+                </li>
+                <li class="nav-item d-flex align-items-center px-2">
+                    <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\arrow_down.svg">
+                </li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class = "container">
+        <div class="col-md-12 bg-light">
+            <div class="container px-3 d-flex flex-wrap align-items-center justify-content-between pt-2">
+                <span class="user-pages me-lg-auto text-dark">Timer</span>
+
+                <ul class="my-2 justify-content-between me-0 align-items-center">
+                <li class="btn border-0">
+                        <image class="bi d-block mx-auto" width="14" height="9" src ="..\images\icons\arrow_down.svg">
+                </li>
+                <li class="btn border-0">
+                        <image class="bi d-block mx-auto" width="17" height="17" src ="..\images\icons\Update.svg">
+                </li>
+                <li class="btn border-0">
+                        <image class="bi d-block mx-auto" width="17" height="17" src ="..\images\icons\Close.svg">
+                </li>
+                </ul>
+            </div>
+
+            <div id="timer" class="p-3 pb-4 text-dark d-flex justify-content-start align-items-center"> 
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>
