@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     // если куки есть, берем из них значение времени
     if (cookieValueTimer) {
-        timeSpent = parseInt(cookieValue);
+        timeSpent = parseInt(cookieValueTimer);
         startTime = Date.now() - timeSpent;
     }
 
