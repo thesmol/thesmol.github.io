@@ -2,27 +2,35 @@
 $(document).ready(function () {
   // Получаем текущее значение таймера из куки, если оно есть, или инициализируем его с нуля
   var timerValue = getCookie('timerValue') || 0;
-  // Получаем текущее время, чтобы можно было вычислить, сколько времени сейчас прошло
-  var currentTime = new Date().getTime();
   // Получаем элемент таймера
   var timerElem = document.getElementById('timer');
 
   // Обновляем значение таймера и время последнего захода на страницу в куки каждые 1 секунду
   setInterval(function () {
-    // Вычисляем, сколько времени прошло с последнего обновления таймера
-    var timeDiff = new Date().getTime() - currentTime;
-    // Добавляем время к текущему значению таймера
-    timerValue += timeDiff;
-    // Обновляем время последнего захода на страницу
-    currentTime = new Date().getTime();
-
-    // Записываем новое значение таймера в куки, истечение срока действия - посещение сайта, путь - корень домена
-    document.cookie = "timerValue=" + timerValue + ";expires=" + new Date(new Date().getTime() + 1 * 60 * 60 * 1000).toUTCString() + ";path=/";
-
+    // Получаем текущее время
+    var currentTime = new Date().getTime();
+  
+    // Вычисляем, сколько времени прошло с последней записи таймера
+    var timeDiff = currentTime - lastTimestamp;
+    var newTimerValue = timerValue + timeDiff;
+  
+    // // Обнуляем значение таймера после достижения максимального значения
+    // if (newTimerValue >= MAX_TIMER_VALUE) {
+    //   newTimerValue = 0;
+    // }
+  
+    // Обновляем значение таймера и время последней записи в куки
+    document.cookie = 'timerValue=' + newTimerValue + '; expires=' + new Date(currentTime + 1 * 60 * 60 * 1000).toUTCString() + '; path=/';
+    document.cookie = 'lastTimestamp=' + currentTime + '; expires=' + new Date(currentTime + 1 * 60 * 60 * 1000).toUTCString() + '; path=/';
+  
     // Обновляем значение элемента на странице
-    if(timerElem){
-      timerElem.innerHTML = formatTime(timerValue);
+    if (timerElem){
+        timerElem.innerHTML = formatTime(newTimerValue);
     }
+  
+    // Обновляем значение таймера и время последней записи в переменных
+    timerValue = newTimerValue;
+    lastTimestamp = currentTime;
   }, 1000);
 
 
