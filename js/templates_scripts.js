@@ -17,6 +17,23 @@ $(document).ready(function() {
     let timeSpent = Date.now() - startTime;
     document.cookie = "timeSpent=" + timeSpent;
   });
+  // let startTime = Date.now();
+  // let timeSpent = 0;
+
+  // // получаем значение куки "timeSpent"
+  // let cookieValueTimer = document.cookie.replace(/(?:(?:^|.*;\s*)timeSpent\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+  // // если куки есть, берем из них значение времени
+  // if (cookieValueTimer) {
+  //   timeSpent = parseInt(cookieValueTimer);
+  //   startTime = Date.now() - timeSpent;
+  // }
+
+  // // Зарегистрируем событие `beforeunload`.
+  // window.addEventListener('beforeunload', function (event) {
+  //   let timeSpent = Date.now() - startTime;
+  //   document.cookie = "timeSpent=" + timeSpent;
+  // });
   // подсвеиваем элемент меню навигации, соотвествующий текущей странице
   highlightCurrentPage();
   //   // получаем ссылки на элементы меню 
