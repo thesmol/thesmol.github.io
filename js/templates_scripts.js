@@ -1,6 +1,5 @@
 // general
-$(document).ready(function() { 
-  document.cookie = "visited=true; SameSite=strict";
+$(document).ready(function() {
   let startTime = Date.now();
   let timeSpent = 0;
 
@@ -13,18 +12,35 @@ $(document).ready(function() {
       startTime = Date.now() - timeSpent;
   }
 
-  // сохраняем текущее время в куки при закрытии страницы
-  window.addEventListener("beforeunload", function(event) {
-      
-      if (document.cookie.indexOf("visited") >= 0) {
-        let timeSpent = Date.now() - startTime;
-        document.cookie = "timeSpent=" + timeSpent + "; SameSite=strict";
-        document.cookie = "visited=false";
-        console.log("User is leaving the website");
-      } else {
-        // User is refreshing the website
-        // Ignore the event
+  // Зарегистрируем событие `beforeunload`.
+  window.addEventListener('beforeunload', function(event) {
+    // Сохраняем текущую временную метку в cookie
+    document.cookie = 'pageUnloadTime=' + Date.now();
+  });
+
+  // Зарегистрируем событие `load`.
+  window.addEventListener('load', function(event) {
+    // Считываем куки, установленные событием beforeunload
+    var cookies = document.cookie.split(';');
+    var pageUnloadTime;
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.indexOf('pageUnloadTime=') === 0) {
+        pageUnloadTime = parseInt(cookie.substring(15));
       }
+    }
+    // Если cookie установлен, страница была завершена, в противном случае она была обновлена
+    if (pageUnloadTime) {
+      document.cookie = "timeSpent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      console.log('Покинуть страницу');
+    } else {
+      let timeSpent = Date.now() - startTime;
+      document.cookie = "timeSpent=" + timeSpent + "; SameSite=strict";
+      console.log('Обновление страницы');
+    }
+
+    // Очистить cookie
+    document.cookie = 'pageUnloadTime=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   });
 
   // подсвеиваем элемент меню навигации, соотвествующий текущей странице
