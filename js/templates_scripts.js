@@ -105,11 +105,9 @@ function getCookie(name) {
 }
 
 function formatTime(time) {
-  let currentTime = Date.now();
-  timeSpent = currentTime - time;
-  let seconds = Math.floor((timeSpent / 1000) % 60);
-  let minutes = Math.floor((timeSpent / (1000 * 60)) % 60);
-  let hours = Math.floor((timeSpent / (1000 * 60 * 60)) % 24);
+  let seconds = Math.floor((time / 1000) % 60);
+  let minutes = Math.floor((time / (1000 * 60)) % 60);
+  let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
   let timer = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
   return timer;
 }
