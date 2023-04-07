@@ -1,10 +1,10 @@
 // отображаем время таймера на странице
 $(document).ready(function(){
     // получаем значение куки "timeSpent"
-    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)timeSpent\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    let cookieValueTimer = document.cookie.replace(/(?:(?:^|.*;\s*)timeSpent\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
     // если куки есть, берем из них значение времени
-    if (cookieValue) {
+    if (cookieValueTimer) {
         timeSpent = parseInt(cookieValue);
         startTime = Date.now() - timeSpent;
     }
