@@ -68,3 +68,12 @@ function highlightCurrentPage() {
       return this.href == url;
   }).parent().addClass('active');
 }
+function formatTime(time) {
+  let currentTime = Date.now();
+  timeSpent = currentTime - time;
+  let seconds = Math.floor((timeSpent / 1000) % 60);
+  let minutes = Math.floor((timeSpent / (1000 * 60)) % 60);
+  let hours = Math.floor((timeSpent / (1000 * 60 * 60)) % 24);
+  let timer = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+  return timer;
+}
