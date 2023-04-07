@@ -68,6 +68,14 @@ function highlightCurrentPage() {
       return this.href == url;
   }).parent().addClass('active');
 }
+
+// Функция для получения значения из куки по имени
+function getCookie(name) {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
 function formatTime(time) {
   let currentTime = Date.now();
   timeSpent = currentTime - time;
