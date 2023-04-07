@@ -2,6 +2,8 @@
 $(document).ready(function () {
   // Получаем текущее значение таймера из куки, если оно есть, или инициализируем его с нуля
   var timerValue = getCookie('timerValue') || 0;
+  // определение переменной lastTimestamp со значением текущего времени, если она еще не определена
+  var lastTimestamp = parseInt(getCookie('lastTimestamp')) || new Date().getTime(); 
   // Получаем элемент таймера
   var timerElem = document.getElementById('timer');
 
