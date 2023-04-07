@@ -1,22 +1,32 @@
 // general
-$(document).ready(function() {
-  let startTime = Date.now();
-  let timeSpent = 0;
+$(document).ready(function () {
+  // Получаем текущее значение таймера из куки, если оно есть, или инициализируем его с нуля
+  var timerValue = getCookie('timerValue') || 0;
+  // Получаем текущее время, чтобы можно было вычислить, сколько времени сейчас прошло
+  var currentTime = new Date().getTime();
+  // Получаем элемент таймера
+  var timerElem = document.getElementById('timer');
 
-  // получаем значение куки "timeSpent"
-  let cookieValueTimer = document.cookie.replace(/(?:(?:^|.*;\s*)timeSpent\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+  // Обновляем значение таймера и время последнего захода на страницу в куки каждые 1 секунду
+  setInterval(function () {
+    // Вычисляем, сколько времени прошло с последнего обновления таймера
+    var timeDiff = new Date().getTime() - currentTime;
+    // Добавляем время к текущему значению таймера
+    timerValue += timeDiff;
+    // Обновляем время последнего захода на страницу
+    currentTime = new Date().getTime();
 
-  // если куки есть, берем из них значение времени
-  if (cookieValueTimer) {
-      timeSpent = parseInt(cookieValueTimer);
-      startTime = Date.now() - timeSpent;
-  }
+    // Записываем новое значение таймера в куки, истечение срока действия - посещение сайта, путь - корень домена
+    document.cookie = "timerValue=" + timerValue + ";expires=" + new Date(new Date().getTime() + 1 * 60 * 60 * 1000).toUTCString() + ";path=/";
 
-  // Зарегистрируем событие `beforeunload`.
-  window.addEventListener('beforeunload', function(event) {
-    let timeSpent = Date.now() - startTime;
-    document.cookie = "timeSpent=" + timeSpent;
-  });
+    // Обновляем значение элемента на странице
+    if(timerElem){
+      timerElem.innerHTML = formatTime(timerValue);
+    }
+  }, 1000);
+
+
+
   // let startTime = Date.now();
   // let timeSpent = 0;
 
@@ -34,6 +44,7 @@ $(document).ready(function() {
   //   let timeSpent = Date.now() - startTime;
   //   document.cookie = "timeSpent=" + timeSpent;
   // });
+  
   // подсвеиваем элемент меню навигации, соотвествующий текущей странице
   highlightCurrentPage();
   //   // получаем ссылки на элементы меню 
