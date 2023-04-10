@@ -1,41 +1,21 @@
 // general
 $(document).ready(function () {
-  // Получаем текущее значение таймера из куки, если оно есть, или инициализируем его с нуля
-  var timerValue = getCookie('timerValue') || 0;
-  // определение переменной lastTimestamp со значением текущего времени, если она еще не определена
-  var lastTimestamp = parseInt(getCookie('lastTimestamp')) || new Date().getTime(); 
+  // Сохраняем текущее время в куки с временем жизни 0 (куки исчезнут после закрытия сайта)
+  document.cookie = "lastVisitTime=" + Date().getTime() + ";path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
   // Получаем элемент таймера
-  var timerElem = document.getElementById('timer');
-
+  const timerElem = document.getElementById('timer');
+  // Получаем время последнего посещения страницы из куки
+  var lastVisitTime = getCookie('lastVisitTime');
   // Обновляем значение таймера и время последнего захода на страницу в куки каждые 1 секунду
-  setInterval(function () {
-    // Получаем текущее время
-    var currentTime = new Date().getTime();
-  
-    // Вычисляем, сколько времени прошло с последней записи таймера
-    var timeDiff = currentTime - lastTimestamp;
-    var newTimerValue = timerValue + timeDiff;
-  
-    // // Обнуляем значение таймера после достижения максимального значения
-    // if (newTimerValue >= MAX_TIMER_VALUE) {
-    //   newTimerValue = 0;
-    // }
-  
-    // Обновляем значение таймера и время последней записи в куки
-    document.cookie = 'timerValue=' + newTimerValue + '; expires=' + new Date(currentTime + 1 * 60 * 60 * 1000).toUTCString() + '; path=/';
-    document.cookie = 'lastTimestamp=' + currentTime + '; expires=' + new Date(currentTime + 1 * 60 * 60 * 1000).toUTCString() + '; path=/';
-  
+  if (timerElem){
+  setInterval(function() {
+      // Получаем текущее время
+    let currentTime = new Date().getTime();
+    // Вычисляем, сколько времени прошло с последнего обновления таймера
+    let timeDiff = currentTime - lastVisitTime;
     // Обновляем значение элемента на странице
-    if (timerElem){
-        timerElem.innerHTML = formatTime(newTimerValue);
-    }
-  
-    // Обновляем значение таймера и время последней записи в переменных
-    timerValue = newTimerValue;
-    lastTimestamp = currentTime;
-  }, 1000);
-
-
+    timerElem.innerHTML = formatTime(timeDiff);
+  }, 1000);}
 
   // let startTime = Date.now();
   // let timeSpent = 0;
@@ -115,9 +95,9 @@ function getCookie(name) {
 }
 
 function formatTime(time) {
-  let seconds = Math.floor((time / 1000) % 60);
-  let minutes = Math.floor((time / (1000 * 60)) % 60);
-  let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
-  let timer = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
-  return timer;
+  let hours = Math.floor(time / (1000 * 60 * 60));
+  let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((time % (1000 * 60)) / 1000);
+  
+  return `${hours}:${minutes}:${seconds}`;
 }
