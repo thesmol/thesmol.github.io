@@ -70,6 +70,8 @@ $(document).ready(function () {
   // });
 });
 
+
+// функция для подсветки выбранной страницы в меню навигации
 function highlightCurrentPage() {
   var url = window.location;
   $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
@@ -85,6 +87,7 @@ function getCookie(name) {
   if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
+// функция для преобразовния времени в милисекундай в формат чч:мм:сс
 function formatTime(time) {
   let hours = Math.floor(time / (1000 * 60 * 60));
   let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
@@ -93,32 +96,35 @@ function formatTime(time) {
   return timer;
 }
 
+// функция для показа элемента с кружочком закрузки
 function showLoader() {
   document.getElementById("loader").style.display="block";
  }
  
- function hideLoader() {
-  document.getElementById("loader").classList.toggle("shut-the-loader");
- }
+// функция для скрытия элемента с кружочком закрузки
+function hideLoader() {
+document.getElementById("loader").classList.toggle("shut-the-loader");
+}
 
- function mapInit() { 
-  var map; 
-  var placemark; 
-  map = new ymaps.Map("map", { 
-      center: [56.749905, 37.141429], 
-      zoom: 14, 
-  }); 
-  placemark = new ymaps.Placemark([56.749905, 37.141429], {}, { 
-      preset: "islands#redDotIcon", 
-      draggable: true 
-  }); 
-  
-  map.geoObjects.add(placemark); 
-  
-  map.events.add("boundschange", function() { 
-      showLoader(); 
-  }); 
-  ymaps.ready(function() {
-      hideLoader();
-  });
+// функция для инициализации Яндекс карты
+function mapInit() { 
+var map; 
+var placemark; 
+map = new ymaps.Map("map", { 
+    center: [56.749905, 37.141429], 
+    zoom: 14, 
+}); 
+placemark = new ymaps.Placemark([56.749905, 37.141429], {}, { 
+    preset: "islands#redDotIcon", 
+    draggable: true 
+}); 
+
+map.geoObjects.add(placemark); 
+
+map.events.add("boundschange", function() { 
+    showLoader(); 
+}); 
+ymaps.ready(function() {
+    hideLoader();
+});
 }
