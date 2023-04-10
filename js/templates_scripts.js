@@ -6,7 +6,7 @@ $(document).ready(function () {
   // Получаем элемент таймера
   const timerElem = document.getElementById('timer');
   // Получаем время последнего посещения страницы из куки
-  var lastVisitTime = getCookie('lastVisitTime');
+  var lastVisitTime = parseInt(getCookie('lastVisitTime')); 
   // Обновляем значение таймера и время последнего захода на страницу в куки каждые 1 секунду
   if (timerElem){
   setInterval(function() {
