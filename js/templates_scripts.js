@@ -28,46 +28,72 @@ $(document).ready(function () {
     timerElem.innerHTML = formatTime(timeDiff);
   }, 1000);}
 
-  //   // получаем ссылки на элементы меню 
-  // var menuLinks = document.querySelectorAll('.nav-link');
+  $('body').on('click', '.ajax-link', function(event) {
+    event.preventDefault(); // отменяем стандартное действие при клике на ссылку
+  
+    var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
+  
+    // отправляем AJAX запрос на сервер
+    $.ajax({
+      url: url,
+      success: function(data) {
+        // получаем HTML-код страницы и заменяем содержимое текущей страницы на его содержимое
+        $('main').html(data);
+        const timerElem = document.getElementById('timer');
+        const mapElem = document.getElementById('map');
 
-  // // обрабатываем клик по каждой ссылке 
-  // menuLinks.forEach(function(link) {
-  //   link.addEventListener('click', function(e) {
-  //     e.preventDefault(); // отменяем стандартное действие ссылки
+        if(mapElem){
+          ymaps.ready(mapInit);
+        }
+
+        if (timerElem){
+          setInterval(function() {
+            let currentTime = new Date().getTime();
+            let timeDiff = currentTime - lastVisitTime;
+            timerElem.innerHTML = formatTime(timeDiff);
+          }, 1000);}
+        // изменяем заголовок страницы 
+        document.title = title;
+
+        // добавляем запись в историю браузера
+        history.pushState(null, null, url);
+
+        highlightCurrentPage();
+      }
+    });
+  });
+
+  $(window).on('popstate', function(event) {
+    // получаем URL страницы, на которую нужно перейти
+    var url = location.pathname;
   
-  //     // отправляем AJAX-запрос на сервер
-  //     $.ajax({
-  //       url: link.href,
-  //       method: 'GET',
-  //       success: function(data) {
-  //         // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
-  //         var content = $('html');
-  //         content.html(data);
-  //         // меняем URL страницы 
-  //         history.pushState(null, null, link.href);
-  
-  //         highlightCurrentPage();
-  //       }
-  //     });
-  //   });
-  // });
-  
-  // // обрабатываем событие изменения URL страницы 
-  // window.addEventListener('popstate', function(e) {
-  //   // отправляем AJAX-запрос на сервер с новым URL 
-  //   $.ajax({
-  //     url: location.href,
-  //     method: 'GET',
-  //     success: function(data) {
-  //       // если запрос успешен, заменяем содержимое страницы на полученный HTML-код 
-  //       var content = $('html');
-  //       content.html(data);
-  
-  //       highlightCurrentPage();
-  //     }
-  //   });
-  // });
+    // отправляем AJAX запрос на сервер
+    $.ajax({
+      url: url,
+      success: function(data) {
+        // получаем HTML-код страницы и заменяем содержимое текущей страницы на его содержимое
+        $('main').html(data);
+        const timerElem = document.getElementById('timer');
+        const mapElem = document.getElementById('map');
+
+        if(mapElem){
+          ymaps.ready(mapInit);
+        }
+
+        if (timerElem){
+          setInterval(function() {
+            let currentTime = new Date().getTime();
+            let timeDiff = currentTime - lastVisitTime;
+            timerElem.innerHTML = formatTime(timeDiff);
+          }, 1000);}
+
+        // изменяем заголовок страницы 
+        document.title = title;
+
+        highlightCurrentPage();
+      }
+    });
+  });
 });
 
 
