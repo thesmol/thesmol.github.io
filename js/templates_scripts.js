@@ -2,7 +2,7 @@
 $(document).ready(function () {
   // Сохраняем текущее время в куки с временем жизни 0 (куки исчезнут после закрытия сайта)
   var startTime = new Date().getTime();
-  document.cookie = "lastVisitTime=" + startTime + ";path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  document.cookie = "lastVisitTime=" + startTime + ";path=/;expires=Session";
   // Получаем элемент таймера
   const timerElem = document.getElementById('timer');
   // Получаем время последнего посещения страницы из куки
@@ -99,6 +99,6 @@ function formatTime(time) {
   let hours = Math.floor(time / (1000 * 60 * 60));
   let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((time % (1000 * 60)) / 1000);
-  
-  return `${hours}:${minutes}:${seconds}`;
+  let timer = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+  return timer;
 }
