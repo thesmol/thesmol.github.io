@@ -32,7 +32,8 @@ $(document).ready(function () {
     event.preventDefault(); // отменяем стандартное действие при клике на ссылку
   
     var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
-  
+    var title = $(this).data('title'); // получаем значение атрибута "data-title"
+
     // отправляем AJAX запрос на сервер
     $.ajax({
       url: url,
@@ -70,7 +71,8 @@ $(document).ready(function () {
   $(window).on('popstate', function(event) {
     // получаем URL страницы, на которую нужно перейти
     var url = location.pathname;
-  
+    var title = $(this).data('title'); // получаем значение атрибута "data-title"
+    
     // отправляем AJAX запрос на сервер
     $.ajax({
       url: url,
