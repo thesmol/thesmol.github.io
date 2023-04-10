@@ -1,7 +1,8 @@
 // general
 $(document).ready(function () {
   // Сохраняем текущее время в куки с временем жизни 0 (куки исчезнут после закрытия сайта)
-  document.cookie = "lastVisitTime=" + Date().getTime() + ";path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  var startTime = new Date().getTime();
+  document.cookie = "lastVisitTime=" + startTime + ";path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
   // Получаем элемент таймера
   const timerElem = document.getElementById('timer');
   // Получаем время последнего посещения страницы из куки
