@@ -7,14 +7,14 @@ $(document).ready(function () {
   // подсвеиваем элемент меню навигации, соотвествующий текущей странице
   highlightCurrentPage();
   // Получаем элемент карты
-  const mapElem = document.getElementById('map');
+  var mapElem = document.getElementById('map');
   //если на странице есть карта, то показываем
   if(mapElem){
     ymaps.ready(mapInit);
   }
 
   // Получаем элемент таймера
-  const timerElem = document.getElementById('timer');
+  var timerElem = document.getElementById('timer');
   // Получаем время последнего посещения страницы из куки
   var lastVisitTime = parseInt(getCookie('lastVisitTime')); 
   // Обновляем значение таймера и время последнего захода на страницу в куки каждые 1 секунду
