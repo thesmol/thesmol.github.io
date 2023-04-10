@@ -15,7 +15,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=1bfd268e-9a13-44b1-90e3-e8b9d815caf3&lang=ru_RU" type="text/javascript"></script>
     <script class = "page-script" src="..\js\templates_scripts.js"></script>
-    <script class = "page-script" src="..\js\map_script.js"></script>
     <title>Карта</title>
 </head>
 <body class = "custom-bg">
@@ -55,15 +54,15 @@
             <ul class="nav me-auto">
                 <li class="nav-item d-flex align-items-center px-2">
                     <image class="bi d-block mx-auto" width="13.34" height="11.6" src ="..\images\icons\activity.svg">
-                    <a href="index.html" class="nav-link link-dark px-2">Activity</a>
+                    <a href="index.html" class="ajax-link nav-link link-dark px-2" data-title="Главная">Activity</a>
                 </li>
                 <li class="nav-item d-flex align-items-center px-2">
                     <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\map.svg">
-                    <a href="map.html" class="nav-link link-dark px-2">Map</a>
+                    <a href="map.html" class="ajax-link nav-link link-dark px-2" data-title="Карта">Map</a>
                 </li>
                 <li class="nav-item d-flex align-items-center px-2">
                     <image class="bi d-block mx-auto" width="14" height="9.64" src ="..\images\icons\time.svg">
-                    <a href="timer.html" class="nav-link link-dark px-2">Time</a>
+                    <a href="timer.html" class="ajax-link nav-link link-dark px-2" data-title="Таймер">Time</a>
                 </li>
             </ul>
             <ul class="nav">
