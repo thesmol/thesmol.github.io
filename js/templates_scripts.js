@@ -64,7 +64,9 @@ $(document).ready(function () {
         history.pushState(null, null, url);
         // добавляем подсветку элемента навигационного меню
         highlightCurrentPage();
-      }
+      },
+      error: function(xhr, status, error) {
+        console.log("AJAX Error:", status, error);}
     });
   });
 
@@ -101,7 +103,9 @@ $(document).ready(function () {
         document.title = title;
         // добавляем подсветку элемента навигационного меню
         highlightCurrentPage();
-      }
+      },
+      error: function(xhr, status, error) {
+        console.log("AJAX Error:", status, error);}
     });
   });
 });
