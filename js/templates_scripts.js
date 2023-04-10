@@ -1,12 +1,17 @@
 // general
-
+// Сохраняем текущее время в куки с временем жизни 0 (куки исчезнут после закрытия сайта)
 var startTime = new Date().getTime();
 document.cookie = "lastVisitTime=" + startTime + ";path=/;expires=Session";
 
 $(document).ready(function () {
   // подсвеиваем элемент меню навигации, соотвествующий текущей странице
   highlightCurrentPage();
-  // Сохраняем текущее время в куки с временем жизни 0 (куки исчезнут после закрытия сайта)
+  // Получаем элемент карты
+  const mapElem = document.getElementById('map');
+  //если на странице есть карта, то показываем
+  if(mapElem){
+    ymaps.ready(mapInit);
+  }
 
   // Получаем элемент таймера
   const timerElem = document.getElementById('timer');
@@ -86,4 +91,34 @@ function formatTime(time) {
   let seconds = Math.floor((time % (1000 * 60)) / 1000);
   let timer = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
   return timer;
+}
+
+function showLoader() {
+  document.getElementById("loader").style.display="block";
+ }
+ 
+ function hideLoader() {
+  document.getElementById("loader").classList.toggle("shut-the-loader");
+ }
+
+ function mapInit() { 
+  var map; 
+  var placemark; 
+  map = new ymaps.Map("map", { 
+      center: [56.749905, 37.141429], 
+      zoom: 14, 
+  }); 
+  placemark = new ymaps.Placemark([56.749905, 37.141429], {}, { 
+      preset: "islands#redDotIcon", 
+      draggable: true 
+  }); 
+  
+  map.geoObjects.add(placemark); 
+  
+  map.events.add("boundschange", function() { 
+      showLoader(); 
+  }); 
+  ymaps.ready(function() {
+      hideLoader();
+  });
 }
