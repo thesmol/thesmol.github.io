@@ -57,7 +57,7 @@ $(document).ready(function () {
 
         // добавляем запись в историю браузера
         history.pushState(null, null, url);
-
+        // добавляем подсветку элемента навигационного меню
         highlightCurrentPage();
       }
     });
@@ -89,7 +89,7 @@ $(document).ready(function () {
 
         // изменяем заголовок страницы 
         document.title = title;
-
+        // добавляем подсветку элемента навигационного меню
         highlightCurrentPage();
       }
     });
@@ -104,6 +104,11 @@ function highlightCurrentPage() {
   $('ul.nav a').filter(function() {
       return this.href == url;
   }).parent().addClass('active');
+}
+
+// функция для удаления подсветки выбранной страницы
+function removeActiveClass() {
+  $('ul.nav a').parent().removeClass('active');
 }
 
 // Функция для получения значения из куки по имени
