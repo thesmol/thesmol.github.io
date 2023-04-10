@@ -41,9 +41,9 @@ $(document).ready(function () {
         // удаляем подсветку элемента навигационного меню
         removeActiveClass()
         // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).find("main").html();
+        var mainContent = $(data).find('main').html();
         // Заменяем содержимое элемента "main" на странице
-        $("main").html(mainContent);
+        $('main').html(mainContent);
         const timerElem = document.getElementById('timer');
         const mapElem = document.getElementById('map');
 
@@ -82,9 +82,9 @@ $(document).ready(function () {
         // удаляем подсветку элемента навигационного меню
         removeActiveClass()
         // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).find("main").html();
+        var mainContent = $(data).find('main').html();
         // Заменяем содержимое элемента "main" на странице
-        $("main").html(mainContent);
+        $('main').html(mainContent);
         const timerElem = document.getElementById('timer');
         const mapElem = document.getElementById('map');
 
