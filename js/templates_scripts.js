@@ -37,8 +37,12 @@ $(document).ready(function () {
     $.ajax({
       url: url,
       success: function(data) {
-        // получаем HTML-код страницы и заменяем содержимое текущей страницы на его содержимое
-        $('main').html(data);
+        // удаляем подсветку элемента навигационного меню
+        removeActiveClass()
+        // Находим элемент "main" в полученном HTML-коде
+        var mainContent = $(data).find("main").html();
+        // Заменяем содержимое элемента "main" на странице
+        $("main").html(mainContent);
         const timerElem = document.getElementById('timer');
         const mapElem = document.getElementById('map');
 
@@ -71,8 +75,12 @@ $(document).ready(function () {
     $.ajax({
       url: url,
       success: function(data) {
-        // получаем HTML-код страницы и заменяем содержимое текущей страницы на его содержимое
-        $('main').html(data);
+        // удаляем подсветку элемента навигационного меню
+        removeActiveClass()
+        // Находим элемент "main" в полученном HTML-коде
+        var mainContent = $(data).find("main").html();
+        // Заменяем содержимое элемента "main" на странице
+        $("main").html(mainContent);
         const timerElem = document.getElementById('timer');
         const mapElem = document.getElementById('map');
 
