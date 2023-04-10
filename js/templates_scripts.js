@@ -13,7 +13,7 @@ $(document).ready(function () {
       // Получаем текущее время
     let currentTime = new Date().getTime();
     // Вычисляем, сколько времени прошло с последнего обновления таймера
-    let timeDiff = currentTime - lastVisitTime;
+    let timeDiff = currentTime - startTime;
     // Обновляем значение элемента на странице
     timerElem.innerHTML = formatTime(timeDiff);
   }, 1000);}
