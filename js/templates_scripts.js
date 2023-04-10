@@ -1,8 +1,13 @@
 // general
+
+var startTime = new Date().getTime();
+document.cookie = "lastVisitTime=" + startTime + ";path=/;expires=Session";
+
 $(document).ready(function () {
+  // подсвеиваем элемент меню навигации, соотвествующий текущей странице
+  highlightCurrentPage();
   // Сохраняем текущее время в куки с временем жизни 0 (куки исчезнут после закрытия сайта)
-  var startTime = new Date().getTime();
-  document.cookie = "lastVisitTime=" + startTime + ";path=/;expires=Session";
+
   // Получаем элемент таймера
   const timerElem = document.getElementById('timer');
   // Получаем время последнего посещения страницы из куки
