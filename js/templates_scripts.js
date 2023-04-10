@@ -41,11 +41,11 @@ $(document).ready(function () {
         // удаляем подсветку элемента навигационного меню
         removeActiveClass()
         // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).find('main').html();
+        var mainContent = $(data).find('#mainContent').html();
         // Заменяем содержимое элемента "main" на странице
         $('main').html(mainContent);
-        const timerElem = document.getElementById('timer');
-        const mapElem = document.getElementById('map');
+        timerElem = document.getElementById('timer');
+        mapElem = document.getElementById('map');
 
         if(mapElem){
           ymaps.ready(mapInit);
@@ -82,11 +82,11 @@ $(document).ready(function () {
         // удаляем подсветку элемента навигационного меню
         removeActiveClass()
         // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).find('main').html();
+        var mainContent = $(data).find('#mainContent').html();
         // Заменяем содержимое элемента "main" на странице
         $('main').html(mainContent);
-        const timerElem = document.getElementById('timer');
-        const mapElem = document.getElementById('map');
+        timerElem = document.getElementById('timer');
+        mapElem = document.getElementById('map');
 
         if(mapElem){
           ymaps.ready(mapInit);
