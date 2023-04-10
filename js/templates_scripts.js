@@ -74,10 +74,10 @@ $(document).ready(function () {
 // функция для подсветки выбранной страницы в меню навигации
 function highlightCurrentPage() {
   var url = window.location;
-  $('li.nav-item a[href="'+ url +'"]').addClass('active');
-  $('li.nav-item').filter(function() {
+  $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+  $('ul.nav a').filter(function() {
       return this.href == url;
-  }).addClass('active');
+  }).parent().addClass('active');
 }
 
 // Функция для получения значения из куки по имени
