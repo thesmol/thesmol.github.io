@@ -193,6 +193,9 @@ function highlightCurrentPage() {
   if (url.endsWith('#')) {
       url = url.slice(0, -1);
   }
+  if (url.endsWith('?')) {
+    url = url.slice(0, -1);
+  }
   $('ul.nav a[href="'+ url +'"]').parent().addClass('active'); 
   $('ul.nav a').filter(function() { 
       return this.href == url; 
