@@ -41,8 +41,6 @@ $(document).ready(function () {
       var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       // Если данные есть в кэше используем их
       $('#mainContent').html(mainContent);
-      // Сохраняем полученные данные в кэше
-      sessionStorage.setItem(cacheKey, data);
       // удаляем подсветку предыдущего элемента навигационного меню
       removeActiveClass();
       // добавляем подсветку элемента навигационного меню
@@ -116,8 +114,6 @@ $(document).ready(function () {
       // Если данные есть в кэше используем их
       var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       $('#mainContent').html(mainContent);
-      // Сохраняем полученные данные в кэше
-      sessionStorage.setItem(cacheKey, data);
       // удаляем подсветку предыдущего элемента навигационного меню
       removeActiveClass();
       // добавляем подсветку элемента навигационного меню
