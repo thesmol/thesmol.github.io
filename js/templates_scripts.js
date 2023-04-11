@@ -106,7 +106,8 @@ $(document).ready(function () {
     
   $(window).on('popstate', function(event) {
     var url = location.pathname;
-    var cacheKey = 'page_' + url; // Создаем ключ для кэша
+    var pageUrl = $(this).attr('href');
+    var cacheKey = 'page_' + pageUrl; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
