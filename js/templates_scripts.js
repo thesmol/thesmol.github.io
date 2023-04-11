@@ -38,8 +38,9 @@ $(document).ready(function () {
 
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
+      var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       // Если данные есть в кэше используем их
-      $('#mainContent').html(sessionStorage.getItem(cacheKey));
+      $('#mainContent').html(mainContent);
       } else {
         // Если данных нет в кэше, отправляем AJAX-запрос на сервер
         $.ajax({
@@ -88,8 +89,9 @@ $(document).ready(function () {
 
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
+      var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       // Если данные есть в кэше используем их
-      $('#mainContent').html(sessionStorage.getItem(cacheKey));
+      $('#mainContent').html(mainContent);
       } else {
         // Если данных нет в кэше, отправляем AJAX-запрос на сервер
         $.ajax({
