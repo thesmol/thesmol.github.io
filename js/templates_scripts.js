@@ -43,7 +43,7 @@ $(document).ready(function () {
         // Находим элемент "main" в полученном HTML-коде
         var mainContent = $(data).find('#mainContent').html();
         // Заменяем содержимое элемента "main" на странице
-        $('main').html(mainContent);
+        $('#mainContent').html(mainContent);
         timerElem = document.getElementById('timer');
         mapElem = document.getElementById('map');
 
@@ -84,7 +84,7 @@ $(document).ready(function () {
         // Находим элемент "main" в полученном HTML-коде
         var mainContent = $(data).find('#mainContent').html();
         // Заменяем содержимое элемента "main" на странице
-        $('main').html(mainContent);
+        $('#mainContent').html(mainContent);
         timerElem = document.getElementById('timer');
         mapElem = document.getElementById('map');
 
