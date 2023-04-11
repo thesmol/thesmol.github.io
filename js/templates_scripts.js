@@ -35,10 +35,10 @@ $(document).ready(function () {
     var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
-    // изменяем заголовок страницы 
-    document.title = title;
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
+      // изменяем заголовок страницы 
+      document.title = title;
       // удаляем подсветку предыдущего элемента навигационного меню
       removeActiveClass();
       var mainContent = $(sessionStorage.getItem(cacheKey)).filter('#mainContent').eq(0).html();
@@ -69,6 +69,8 @@ $(document).ready(function () {
           url: url,
           type: 'GET',
           success: function(data) {
+            // изменяем заголовок страницы 
+            document.title = title;
             // Сохраняем полученные данные в кэше
             sessionStorage.setItem(cacheKey, data);
             // удаляем подсветку предыдущего элемента навигационного меню
@@ -104,12 +106,13 @@ $(document).ready(function () {
     
   $(window).on('popstate', function(event) {
     var url = location.pathname;
-    var cacheKey = 'page_' + url; // Создаем ключ для кэша
+    var pageUrl = $(this).attr('href');
+    var cacheKey = 'page_' + pageUrl; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
-    // изменяем заголовок страницы 
-    document.title = title;
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
+      // изменяем заголовок страницы 
+      document.title = title;
       // удаляем подсветку предыдущего элемента навигационного меню
       removeActiveClass();
       // Если данные есть в кэше используем их
@@ -139,6 +142,8 @@ $(document).ready(function () {
           url: url,
           type: 'GET',
           success: function(data) {
+            // изменяем заголовок страницы 
+            document.title = title;
             // Сохраняем полученные данные в кэше
             sessionStorage.setItem(cacheKey, data);
             // удаляем подсветку предыдущего элемента навигационного меню
