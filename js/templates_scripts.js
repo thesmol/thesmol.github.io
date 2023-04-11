@@ -35,7 +35,8 @@ $(document).ready(function () {
     var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
-
+    // изменяем заголовок страницы 
+    document.title = title;
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
       // удаляем подсветку предыдущего элемента навигационного меню
@@ -58,8 +59,6 @@ $(document).ready(function () {
           timerElem.innerHTML = formatTime(timeDiff);
         }, 1000);
       }
-      // изменяем заголовок страницы 
-      document.title = title;
       // добавляем запись в историю браузера
       history.pushState(null, null, url);
       // добавляем подсветку элемента навигационного меню
@@ -92,8 +91,6 @@ $(document).ready(function () {
                 let timeDiff = currentTime - lastVisitTime;
                 timerElem.innerHTML = formatTime(timeDiff);
               }, 1000);}
-            // изменяем заголовок страницы 
-            document.title = title;
             // добавляем запись в историю браузера
             history.pushState(null, null, url);
             // добавляем подсветку элемента навигационного меню
@@ -109,7 +106,8 @@ $(document).ready(function () {
     var url = location.pathname;
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
-
+    // изменяем заголовок страницы 
+    document.title = title;
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
       // удаляем подсветку предыдущего элемента навигационного меню
@@ -132,8 +130,7 @@ $(document).ready(function () {
           timerElem.innerHTML = formatTime(timeDiff);
         }, 1000);
       }
-      // изменяем заголовок страницы 
-      document.title = title;
+      
       // добавляем подсветку элемента навигационного меню
       highlightCurrentPage();              
       } else {
@@ -164,8 +161,6 @@ $(document).ready(function () {
                 let timeDiff = currentTime - lastVisitTime;
                 timerElem.innerHTML = formatTime(timeDiff);
               }, 1000);}
-            // изменяем заголовок страницы 
-            document.title = title;
             // добавляем подсветку элемента навигационного меню
             highlightCurrentPage();
           },
