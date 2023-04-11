@@ -41,7 +41,7 @@ $(document).ready(function () {
         // удаляем подсветку элемента навигационного меню
         removeActiveClass()
         // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).find('#mainContent').html();
+        var mainContent = $(data).html('#mainContent');
         // Заменяем содержимое элемента "main" на странице
         $('#mainContent').html(mainContent);
         timerElem = document.getElementById('timer');
@@ -82,7 +82,7 @@ $(document).ready(function () {
         // удаляем подсветку элемента навигационного меню
         removeActiveClass()
         // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).find('#mainContent').html();
+        var mainContent = $(data).html('#mainContent');
         // Заменяем содержимое элемента "main" на странице
         $('#mainContent').html(mainContent);
         timerElem = document.getElementById('timer');
