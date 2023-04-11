@@ -113,7 +113,7 @@ $(document).ready(function () {
     var url = location.pathname;
     var pageUrl = $(this).attr('href');
     var cacheKey = 'page_' + pageUrl; // Создаем ключ для кэша
-    var title = $('ahref="' + url + '"').data('title'); // получаем значение атрибута "data-title"
+    var title = $('a[href="'+ url +'"]').data('title'); // получаем значение атрибута "data-title"
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
       // изменяем заголовок страницы 
