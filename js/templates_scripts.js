@@ -28,85 +28,107 @@ $(document).ready(function () {
     timerElem.innerHTML = formatTime(timeDiff);
   }, 1000);}
 
+  // Реализуем SPA
   $('body').on('click', '.ajax-link', function(event) {
     event.preventDefault(); // отменяем стандартное действие при клике на ссылку
   
     var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
+    var cacheKey = 'page_' + url; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
 
-    // отправляем AJAX запрос на сервер
-    $.ajax({
-      url: url,
-      success: function(data) {
-        // удаляем подсветку элемента навигационного меню
-        removeActiveClass()
-        // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).html('main');
-        // Заменяем содержимое элемента "main" на странице
-        $('main').html(mainContent);
-        timerElem = document.getElementById('timer');
-        mapElem = document.getElementById('map');
+     // Проверяем наличие сохраненных данных в кэше
+     if (sessionStorage.getItem(cacheKey)) {
+      // Если данные есть в кэше используем их
+      $('#mainContent').html(sessionStorage.getItem(cacheKey));
+      } else {
+        // Если данных нет в кэше, отправляем AJAX-запрос на сервер
+        $.ajax({
+          url: url,
+          type: 'GET',
+          success: function(data) {
+            // Сохраняем полученные данные в кэше
+            sessionStorage.setItem(cacheKey, response);
+            // удаляем подсветку предыдущего элемента навигационного меню
+            removeActiveClass();
+            // добавляем подсветку элемента навигационного меню
+            highlightCurrentPage();
 
-        if(mapElem){
-          ymaps.ready(mapInit);
-        }
+            // Находим элемент "main" в полученном HTML-коде
+            var mainContent = $(data).find('#mainContent').html();
+            // Заменяем содержимое элемента "main" на странице
+            $('#mainContent').html(mainContent);
+            timerElem = document.getElementById('timer');
+            mapElem = document.getElementById('map');
 
-        if (timerElem){
-          setInterval(function() {
-            let currentTime = new Date().getTime();
-            let timeDiff = currentTime - lastVisitTime;
-            timerElem.innerHTML = formatTime(timeDiff);
-          }, 1000);}
-        // изменяем заголовок страницы 
-        document.title = title;
+            if(mapElem){
+              ymaps.ready(mapInit);
+            }
 
-        // добавляем запись в историю браузера
-        history.pushState(null, null, url);
-        // добавляем подсветку элемента навигационного меню
-        highlightCurrentPage();
-      },
-      error: function(xhr, status, error) {
-        console.log("AJAX Error:", status, error);}
+            if (timerElem){
+              setInterval(function() {
+                let currentTime = new Date().getTime();
+                let timeDiff = currentTime - lastVisitTime;
+                timerElem.innerHTML = formatTime(timeDiff);
+              }, 1000);}
+            // изменяем заголовок страницы 
+            document.title = title;
+            // добавляем запись в историю браузера
+            history.pushState(null, null, url);
+          },
+          error: function(xhr, status, error) {
+            console.log("AJAX Error:", status, error);}
+        });
+      }
     });
-  });
-
-  $(window).on('popstate', function(event) {
-    // получаем URL страницы, на которую нужно перейти
-    var url = location.pathname;
-    var title = $(this).data('title'); // получаем значение атрибута "data-title"
     
-    // отправляем AJAX запрос на сервер
-    $.ajax({
-      url: url,
-      success: function(data) {
-        // удаляем подсветку элемента навигационного меню
-        removeActiveClass()
-        // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).html('main');
-        // Заменяем содержимое элемента "main" на странице
-        $('main').html(mainContent);
-        timerElem = document.getElementById('timer');
-        mapElem = document.getElementById('map');
+  $(window).on('popstate', function(event) {
+    var url = location.pathname;
+    var cacheKey = 'page_' + url; // Создаем ключ для кэша
+    var title = $(this).data('title'); // получаем значение атрибута "data-title"
 
-        if(mapElem){
-          ymaps.ready(mapInit);
-        }
+     // Проверяем наличие сохраненных данных в кэше
+     if (sessionStorage.getItem(cacheKey)) {
+      // Если данные есть в кэше используем их
+      $('#mainContent').html(sessionStorage.getItem(cacheKey));
+      } else {
+        // Если данных нет в кэше, отправляем AJAX-запрос на сервер
+        $.ajax({
+          url: url,
+          type: 'GET',
+          success: function(data) {
+            // Сохраняем полученные данные в кэше
+            sessionStorage.setItem(cacheKey, response);
+            // удаляем подсветку предыдущего элемента навигационного меню
+            removeActiveClass();
+            // добавляем подсветку элемента навигационного меню
+            highlightCurrentPage();
 
-        if (timerElem){
-          setInterval(function() {
-            let currentTime = new Date().getTime();
-            let timeDiff = currentTime - lastVisitTime;
-            timerElem.innerHTML = formatTime(timeDiff);
-          }, 1000);}
+            // Находим элемент "main" в полученном HTML-коде
+            var mainContent = $(data).find('#mainContent').html();
+            // Заменяем содержимое элемента "main" на странице
+            $('#mainContent').html(mainContent);
+            timerElem = document.getElementById('timer');
+            mapElem = document.getElementById('map');
 
-        // изменяем заголовок страницы 
-        document.title = title;
-        // добавляем подсветку элемента навигационного меню
-        highlightCurrentPage();
-      },
-      error: function(xhr, status, error) {
-        console.log("AJAX Error:", status, error);}
-    });
+            if(mapElem){
+              ymaps.ready(mapInit);
+            }
+
+            if (timerElem){
+              setInterval(function() {
+                let currentTime = new Date().getTime();
+                let timeDiff = currentTime - lastVisitTime;
+                timerElem.innerHTML = formatTime(timeDiff);
+              }, 1000);}
+            // изменяем заголовок страницы 
+            document.title = title;
+            // добавляем запись в историю браузера
+            history.pushState(null, null, url);
+          },
+          error: function(xhr, status, error) {
+            console.log("AJAX Error:", status, error);}
+        });
+      }
   });
 });
 
