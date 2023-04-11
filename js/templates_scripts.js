@@ -47,7 +47,7 @@ $(document).ready(function () {
           type: 'GET',
           success: function(data) {
             // Сохраняем полученные данные в кэше
-            sessionStorage.setItem(cacheKey, response);
+            sessionStorage.setItem(cacheKey, data);
             // удаляем подсветку предыдущего элемента навигационного меню
             removeActiveClass();
             // добавляем подсветку элемента навигационного меню
@@ -97,7 +97,7 @@ $(document).ready(function () {
           type: 'GET',
           success: function(data) {
             // Сохраняем полученные данные в кэше
-            sessionStorage.setItem(cacheKey, response);
+            sessionStorage.setItem(cacheKey, data);
             // удаляем подсветку предыдущего элемента навигационного меню
             removeActiveClass();
             // добавляем подсветку элемента навигационного меню
