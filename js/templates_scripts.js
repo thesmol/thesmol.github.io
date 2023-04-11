@@ -41,7 +41,7 @@ $(document).ready(function () {
      if (sessionStorage.getItem(cacheKey)) {
       // удаляем подсветку предыдущего элемента навигационного меню
       removeActiveClass();
-      var mainContent = $(sessionStorage.getItem(cacheKey)).html().find('#mainContent');
+      var mainContent = $(sessionStorage.getItem(cacheKey)).filter('#mainContent').eq(0).html();
       // Если данные есть в кэше используем их
       $('#mainContent').html(mainContent);
 
@@ -75,7 +75,7 @@ $(document).ready(function () {
             removeActiveClass();
 
             // Находим элемент "main" в полученном HTML-коде
-            var mainContent = $(data).html().find('#mainContent');
+            var mainContent = $(data).filter('#mainContent').eq(0).html();
             // Заменяем содержимое элемента "main" на странице
             $('#mainContent').html(mainContent);
             timerElem = document.getElementById('timer');
@@ -113,7 +113,7 @@ $(document).ready(function () {
       // удаляем подсветку предыдущего элемента навигационного меню
       removeActiveClass();
       // Если данные есть в кэше используем их
-      var mainContent = $(sessionStorage.getItem(cacheKey)).html().find('#mainContent');
+      var mainContent = $(sessionStorage.getItem(cacheKey)).filter('#mainContent').eq(0).html();
       $('#mainContent').html(mainContent);
 
       timerElem = document.getElementById('timer');
@@ -145,7 +145,7 @@ $(document).ready(function () {
             removeActiveClass();
 
             // Находим элемент "main" в полученном HTML-коде
-            var mainContent = $(data).html().find('#mainContent');
+            var mainContent = $(data).filter('#mainContent').eq(0).html();
             // Заменяем содержимое элемента "main" на странице
             $('#mainContent').html(mainContent);
             timerElem = document.getElementById('timer');
