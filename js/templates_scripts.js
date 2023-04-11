@@ -77,7 +77,7 @@ $(document).ready(function () {
             // Находим элемент "main" в полученном HTML-коде
             var mainContent = $(data).find('#mainContent').html();
             // Заменяем содержимое элемента "main" на странице
-            $('#mainContent').html(mainContent);
+            $('#mainContent').html(data);
             timerElem = document.getElementById('timer');
             mapElem = document.getElementById('map');
 
