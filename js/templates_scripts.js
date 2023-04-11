@@ -41,7 +41,7 @@ $(document).ready(function () {
         // удаляем подсветку элемента навигационного меню
         removeActiveClass()
         // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).find('#mainContent').html();
+        var mainContent = $(data).html('#mainContent');
         // Заменяем содержимое элемента "main" на странице
         $('#mainContent').html(mainContent);
         timerElem = document.getElementById('timer');
@@ -82,7 +82,7 @@ $(document).ready(function () {
         // удаляем подсветку элемента навигационного меню
         removeActiveClass()
         // Находим элемент "main" в полученном HTML-коде
-        var mainContent = $(data).find('#mainContent').html();
+        var mainContent = $(data).html('#mainContent');
         // Заменяем содержимое элемента "main" на странице
         $('#mainContent').html(mainContent);
         timerElem = document.getElementById('timer');
@@ -112,12 +112,15 @@ $(document).ready(function () {
 
 
 // функция для подсветки выбранной страницы в меню навигации
-function highlightCurrentPage() {
-  var url = window.location;
-  $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
-  $('ul.nav a').filter(function() {
-      return this.href == url;
-  }).parent().addClass('active');
+function highlightCurrentPage() { 
+  var url = window.location.href;
+  if (url.endsWith('#')) {
+      url = url.slice(0, -1);
+  }
+  $('ul.nav a[href="'+ url +'"]').parent().addClass('active'); 
+  $('ul.nav a').filter(function() { 
+      return this.href == url; 
+  }).parent().addClass('active'); 
 }
 
 // функция для удаления подсветки выбранной страницы
