@@ -41,6 +41,30 @@ $(document).ready(function () {
       var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       // Если данные есть в кэше используем их
       $('#mainContent').html(mainContent);
+      // Сохраняем полученные данные в кэше
+      sessionStorage.setItem(cacheKey, data);
+      // удаляем подсветку предыдущего элемента навигационного меню
+      removeActiveClass();
+      // добавляем подсветку элемента навигационного меню
+      highlightCurrentPage();
+
+      timerElem = document.getElementById('timer');
+      mapElem = document.getElementById('map');
+
+      if(mapElem){
+        ymaps.ready(mapInit);
+      }
+
+      if (timerElem){
+        setInterval(function() {
+          let currentTime = new Date().getTime();
+          let timeDiff = currentTime - lastVisitTime;
+          timerElem.innerHTML = formatTime(timeDiff);
+        }, 1000);}
+      // изменяем заголовок страницы 
+      document.title = title;
+      // добавляем запись в историю браузера
+      history.pushState(null, null, url);
       } else {
         // Если данных нет в кэше, отправляем AJAX-запрос на сервер
         $.ajax({
@@ -89,9 +113,31 @@ $(document).ready(function () {
 
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
-      var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       // Если данные есть в кэше используем их
+      var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       $('#mainContent').html(mainContent);
+      // Сохраняем полученные данные в кэше
+      sessionStorage.setItem(cacheKey, data);
+      // удаляем подсветку предыдущего элемента навигационного меню
+      removeActiveClass();
+      // добавляем подсветку элемента навигационного меню
+      highlightCurrentPage();
+
+      timerElem = document.getElementById('timer');
+      mapElem = document.getElementById('map');
+
+      if(mapElem){
+        ymaps.ready(mapInit);
+      }
+
+      if (timerElem){
+        setInterval(function() {
+          let currentTime = new Date().getTime();
+          let timeDiff = currentTime - lastVisitTime;
+          timerElem.innerHTML = formatTime(timeDiff);
+        }, 1000);}
+      // изменяем заголовок страницы 
+      document.title = title;              
       } else {
         // Если данных нет в кэше, отправляем AJAX-запрос на сервер
         $.ajax({
@@ -124,8 +170,6 @@ $(document).ready(function () {
               }, 1000);}
             // изменяем заголовок страницы 
             document.title = title;
-            // добавляем запись в историю браузера
-            history.pushState(null, null, url);
           },
           error: function(xhr, status, error) {
             console.log("AJAX Error:", status, error);}
