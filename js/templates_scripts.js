@@ -52,11 +52,13 @@ $(document).ready(function () {
         ymaps.ready(mapInit);
       }
 
-      if (timerElem != null){
-        setInterval(function() {
-          let currentTime = new Date().getTime();
-          let timeDiff = currentTime - lastVisitTime;
-          timerElem.innerHTML = formatTime(timeDiff);
+      if (timerElem != null) {
+        setInterval(function() { 
+          if (timerElem != null) {
+            let currentTime = new Date().getTime(); 
+            let timeDiff = currentTime - lastVisitTime; 
+            timerElem.innerHTML = formatTime(timeDiff);
+          }
         }, 1000);
       }
       // добавляем запись в историю браузера
@@ -87,12 +89,15 @@ $(document).ready(function () {
               ymaps.ready(mapInit);
             }
 
-            if (timerElem != null){
-              setInterval(function() {
-                let currentTime = new Date().getTime();
-                let timeDiff = currentTime - lastVisitTime;
-                timerElem.innerHTML = formatTime(timeDiff);
-              }, 1000);}
+            if (timerElem != null) {
+              setInterval(function() { 
+                if (timerElem != null) {
+                  let currentTime = new Date().getTime(); 
+                  let timeDiff = currentTime - lastVisitTime; 
+                  timerElem.innerHTML = formatTime(timeDiff);
+                }
+              }, 1000);
+            }
             // добавляем запись в историю браузера
             history.pushState(null, null, url);
             // добавляем подсветку элемента навигационного меню
@@ -126,11 +131,13 @@ $(document).ready(function () {
         ymaps.ready(mapInit);
       }
 
-      if (timerElem != null){
-        setInterval(function() {
-          let currentTime = new Date().getTime();
-          let timeDiff = currentTime - lastVisitTime;
-          timerElem.innerHTML = formatTime(timeDiff);
+      if (timerElem != null) {
+        setInterval(function() { 
+          if (timerElem != null) {
+            let currentTime = new Date().getTime(); 
+            let timeDiff = currentTime - lastVisitTime; 
+            timerElem.innerHTML = formatTime(timeDiff);
+          }
         }, 1000);
       }
       
@@ -160,12 +167,15 @@ $(document).ready(function () {
               ymaps.ready(mapInit);
             }
 
-            if (timerElem != null){
-              setInterval(function() {
-                let currentTime = new Date().getTime();
-                let timeDiff = currentTime - lastVisitTime;
-                timerElem.innerHTML = formatTime(timeDiff);
-              }, 1000);}
+            if (timerElem != null) {
+              setInterval(function() { 
+                if (timerElem != null) {
+                  let currentTime = new Date().getTime(); 
+                  let timeDiff = currentTime - lastVisitTime; 
+                  timerElem.innerHTML = formatTime(timeDiff);
+                }
+              }, 1000);
+            }
             // добавляем подсветку элемента навигационного меню
             highlightCurrentPage();
           },
