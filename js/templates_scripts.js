@@ -18,7 +18,7 @@ $(document).ready(function () {
   // Получаем время последнего посещения страницы из куки
   var lastVisitTime = parseInt(getCookie('lastVisitTime')); 
   // Обновляем значение таймера и время последнего захода на страницу в куки каждые 1 секунду
-  while(timerElem){
+  if (timerElem){
   setInterval(function() {
       // Получаем текущее время
     let currentTime = new Date().getTime();
@@ -52,7 +52,7 @@ $(document).ready(function () {
         ymaps.ready(mapInit);
       }
 
-      while(timerElem){
+      if (timerElem){
         setInterval(function() {
           let currentTime = new Date().getTime();
           let timeDiff = currentTime - lastVisitTime;
@@ -85,7 +85,7 @@ $(document).ready(function () {
               ymaps.ready(mapInit);
             }
 
-            while(timerElem){
+            if (timerElem){
               setInterval(function() {
                 let currentTime = new Date().getTime();
                 let timeDiff = currentTime - lastVisitTime;
@@ -123,7 +123,7 @@ $(document).ready(function () {
         ymaps.ready(mapInit);
       }
 
-      while(timerElem){
+      if (timerElem){
         setInterval(function() {
           let currentTime = new Date().getTime();
           let timeDiff = currentTime - lastVisitTime;
