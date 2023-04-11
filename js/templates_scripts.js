@@ -38,13 +38,11 @@ $(document).ready(function () {
 
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
+      // удаляем подсветку предыдущего элемента навигационного меню
+      removeActiveClass();
       var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       // Если данные есть в кэше используем их
       $('#mainContent').html(mainContent);
-      // удаляем подсветку предыдущего элемента навигационного меню
-      removeActiveClass();
-      // добавляем подсветку элемента навигационного меню
-      highlightCurrentPage();
 
       timerElem = document.getElementById('timer');
       mapElem = document.getElementById('map');
@@ -58,11 +56,14 @@ $(document).ready(function () {
           let currentTime = new Date().getTime();
           let timeDiff = currentTime - lastVisitTime;
           timerElem.innerHTML = formatTime(timeDiff);
-        }, 1000);}
+        }, 1000);
+      }
       // изменяем заголовок страницы 
       document.title = title;
       // добавляем запись в историю браузера
       history.pushState(null, null, url);
+      // добавляем подсветку элемента навигационного меню
+      highlightCurrentPage();
       } else {
         // Если данных нет в кэше, отправляем AJAX-запрос на сервер
         $.ajax({
@@ -73,8 +74,6 @@ $(document).ready(function () {
             sessionStorage.setItem(cacheKey, data);
             // удаляем подсветку предыдущего элемента навигационного меню
             removeActiveClass();
-            // добавляем подсветку элемента навигационного меню
-            highlightCurrentPage();
 
             // Находим элемент "main" в полученном HTML-коде
             var mainContent = $(data).find('#mainContent').html();
@@ -97,6 +96,8 @@ $(document).ready(function () {
             document.title = title;
             // добавляем запись в историю браузера
             history.pushState(null, null, url);
+            // добавляем подсветку элемента навигационного меню
+            highlightCurrentPage();
           },
           error: function(xhr, status, error) {
             console.log("AJAX Error:", status, error);}
@@ -111,13 +112,11 @@ $(document).ready(function () {
 
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
+      // удаляем подсветку предыдущего элемента навигационного меню
+      removeActiveClass();
       // Если данные есть в кэше используем их
       var mainContent = $(sessionStorage.getItem(cacheKey)).find('#mainContent').html();
       $('#mainContent').html(mainContent);
-      // удаляем подсветку предыдущего элемента навигационного меню
-      removeActiveClass();
-      // добавляем подсветку элемента навигационного меню
-      highlightCurrentPage();
 
       timerElem = document.getElementById('timer');
       mapElem = document.getElementById('map');
@@ -131,9 +130,12 @@ $(document).ready(function () {
           let currentTime = new Date().getTime();
           let timeDiff = currentTime - lastVisitTime;
           timerElem.innerHTML = formatTime(timeDiff);
-        }, 1000);}
+        }, 1000);
+      }
       // изменяем заголовок страницы 
-      document.title = title;              
+      document.title = title;
+      // добавляем подсветку элемента навигационного меню
+      highlightCurrentPage();              
       } else {
         // Если данных нет в кэше, отправляем AJAX-запрос на сервер
         $.ajax({
@@ -144,8 +146,6 @@ $(document).ready(function () {
             sessionStorage.setItem(cacheKey, data);
             // удаляем подсветку предыдущего элемента навигационного меню
             removeActiveClass();
-            // добавляем подсветку элемента навигационного меню
-            highlightCurrentPage();
 
             // Находим элемент "main" в полученном HTML-коде
             var mainContent = $(data).find('#mainContent').html();
@@ -166,6 +166,8 @@ $(document).ready(function () {
               }, 1000);}
             // изменяем заголовок страницы 
             document.title = title;
+            // добавляем подсветку элемента навигационного меню
+            highlightCurrentPage();
           },
           error: function(xhr, status, error) {
             console.log("AJAX Error:", status, error);}
