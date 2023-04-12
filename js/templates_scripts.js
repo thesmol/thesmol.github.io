@@ -113,7 +113,7 @@ $(document).ready(function () {
     var cacheKey = 'page_' + pageUrl; // Создаем ключ для кэша
     var title = $('a[href="'+ url +'"]').data('title'); // получаем значение атрибута "data-title"
     // изменяем заголовок страницы 
-    //document.title = title;
+    document.title = title;
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
       // удаляем подсветку предыдущего элемента навигационного меню
