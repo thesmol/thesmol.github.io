@@ -113,7 +113,8 @@ $(document).ready(function () {
     });
     
   $(window).on('popstate', function(event) {
-    var url = path.substr(path.lastIndexOf('/') + 1);;
+    var urlParts = location.pathname.split("/");
+    var url = urlParts.pop();
     var title = $('ul.nav a[href="'+ url +'"]').data('title');
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     console.log("url: ", url);
