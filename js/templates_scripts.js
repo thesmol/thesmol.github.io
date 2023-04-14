@@ -34,7 +34,11 @@ $(document).ready(function () {
 
     var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
-    var title = $(this).data('title'); // получаем значение атрибута "data-title"
+    //var title = $(this).data('title'); // получаем значение атрибута "data-title"
+    var title = $('ul.nav a[href="'+ url +'"]').data('title');
+    console.log("url: ", url);
+    console.log("selected element: ", $('ul.nav a[href="'+ url +'"]'));
+    console.log("title: ", title);
     // изменяем заголовок страницы 
     document.title = title;
 
@@ -112,9 +116,9 @@ $(document).ready(function () {
     var url = location.pathname;
     var title = $('ul.nav a[href="'+ url +'"]').data('title');
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
-    console.log('url ', url);
-    console.log('cacheKey ', cacheKey);
-    console.log('title ', title);
+    console.log("url: ", url);
+    console.log("selected element: ", $('ul.nav a[href="'+ url +'"]'));
+    console.log("title: ", title);
     console.log('document.title ', document.title);
     // изменяем заголовок страницы 
     // document.title = title;
