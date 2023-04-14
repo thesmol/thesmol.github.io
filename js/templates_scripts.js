@@ -31,15 +31,12 @@ $(document).ready(function () {
   // Реализуем SPA
   $('body').on('click', '.ajax-link', function(event) {
     event.preventDefault(); // отменяем стандартное действие при клике на ссылку
-  
+
     var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
-    var stateObj = { title: title };  
-    console.log('stateObj.title ', stateObj.title)
     // изменяем заголовок страницы 
     document.title = title;
-
 
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
@@ -66,7 +63,7 @@ $(document).ready(function () {
         }, 1000);
       }
       // добавляем запись в историю браузера
-      history.pushState(stateObj, stateObj.title, url);
+      history.pushState(null, null, url);
       // добавляем подсветку элемента навигационного меню
       highlightCurrentPage();
       } else {
@@ -101,7 +98,7 @@ $(document).ready(function () {
               }, 1000);
             }
             // добавляем запись в историю браузера
-            history.pushState(stateObj, stateObj.title, url);
+            history.pushState(null, null, url);
             // добавляем подсветку элемента навигационного меню
             highlightCurrentPage();
           },
@@ -113,15 +110,14 @@ $(document).ready(function () {
     
   $(window).on('popstate', function(event) {
     var url = location.pathname;
-    var title = event.state.title; 
+    var title = $('a[href="' + url + '"]').data('title');
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     console.log('url ', url);
-
     console.log('cacheKey ', cacheKey);
     console.log('title ', title);
     console.log('document.title ', document.title);
     // изменяем заголовок страницы 
-    document.title = title;
+    // document.title = title;
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
       // удаляем подсветку предыдущего элемента навигационного меню
