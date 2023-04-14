@@ -62,7 +62,7 @@ $(document).ready(function () {
         }, 1000);
       }
       // добавляем запись в историю браузера
-      history.pushState(null, null, url);
+      history.pushState({title: document.title}, null, url);
       // добавляем подсветку элемента навигационного меню
       highlightCurrentPage();
       } else {
@@ -97,7 +97,7 @@ $(document).ready(function () {
               }, 1000);
             }
             // добавляем запись в историю браузера
-            history.pushState(null, null, url);
+            history.pushState({title: document.title}, null, url);
             // добавляем подсветку элемента навигационного меню
             highlightCurrentPage();
           },
