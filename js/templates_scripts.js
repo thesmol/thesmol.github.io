@@ -62,7 +62,7 @@ $(document).ready(function () {
         }, 1000);
       }
       // добавляем запись в историю браузера
-      history.pushState({title: document.title}, null, url);
+      history.pushState({title: title}, null, url);
       // добавляем подсветку элемента навигационного меню
       highlightCurrentPage();
       } else {
@@ -97,7 +97,7 @@ $(document).ready(function () {
               }, 1000);
             }
             // добавляем запись в историю браузера
-            history.pushState({title: document.title}, null, url);
+            history.pushState({title: title}, null, url);
             // добавляем подсветку элемента навигационного меню
             highlightCurrentPage();
           },
@@ -109,7 +109,7 @@ $(document).ready(function () {
     
   $(window).on('popstate', function(event) {
     var url = location.pathname;
-    var title = event.state.title;
+    var title = event.state ? event.state.title : null;
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     console.log('url ', url);
 
