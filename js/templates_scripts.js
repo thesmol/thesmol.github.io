@@ -35,8 +35,11 @@ $(document).ready(function () {
     var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
+    var stateObj = { title: title };  
     // изменяем заголовок страницы 
     document.title = title;
+
+
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
       // удаляем подсветку предыдущего элемента навигационного меню
@@ -62,7 +65,7 @@ $(document).ready(function () {
         }, 1000);
       }
       // добавляем запись в историю браузера
-      history.pushState({title: title}, null, url);
+      history.pushState(stateObj, stateObj.title, url);
       // добавляем подсветку элемента навигационного меню
       highlightCurrentPage();
       } else {
@@ -97,7 +100,7 @@ $(document).ready(function () {
               }, 1000);
             }
             // добавляем запись в историю браузера
-            history.pushState({title: title}, null, url);
+            history.pushState(stateObj, stateObj.title, url);
             // добавляем подсветку элемента навигационного меню
             highlightCurrentPage();
           },
@@ -109,7 +112,7 @@ $(document).ready(function () {
     
   $(window).on('popstate', function(event) {
     var url = location.pathname;
-    var title = event.state ? event.state.title : null;
+    var title = event.state.title; 
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     console.log('url ', url);
 
