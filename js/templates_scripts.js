@@ -110,7 +110,7 @@ $(document).ready(function () {
     
   $(window).on('popstate', function(event) {
     var url = location.pathname;
-    var title = $('a[href="' + url + '"]').data('title');
+    var title = $('ul.nav a[href="'+ url +'"]').data('title');
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     console.log('url ', url);
     console.log('cacheKey ', cacheKey);
@@ -125,7 +125,7 @@ $(document).ready(function () {
       // Если данные есть в кэше используем их
       var mainContent = $(sessionStorage.getItem(cacheKey)).filter('#mainContent').eq(0).html();
       $('#mainContent').html(mainContent);
-
+      console.log('Заголовок подгруженного контетнта ', document.title)
       timerElem = document.getElementById('timer');
       mapElem = document.getElementById('map');
 
@@ -160,6 +160,7 @@ $(document).ready(function () {
             var mainContent = $(data).filter('#mainContent').eq(0).html();
             // Заменяем содержимое элемента "main" на странице
             $('#mainContent').html(mainContent);
+            console.log('Заголовок подгруженного контетнта ', document.title)
             timerElem = document.getElementById('timer');
             mapElem = document.getElementById('map');
 
