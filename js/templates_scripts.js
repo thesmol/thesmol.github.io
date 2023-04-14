@@ -113,7 +113,7 @@ $(document).ready(function () {
     });
     
   $(window).on('popstate', function(event) {
-    var url = window.location.href;
+    var url = location.href;
     var title = $('ul.nav a[href="'+ url +'"]').data('title');
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     console.log("location.href: ", url);
