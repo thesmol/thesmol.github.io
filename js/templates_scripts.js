@@ -34,11 +34,7 @@ $(document).ready(function () {
 
     var url = $(this).attr('href'); // получаем URL страницы, на которую нужно перейти
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
-    //var title = $(this).data('title'); // получаем значение атрибута "data-title"
-    var title = $('ul.nav a[href="'+ url +'"]').data('title');
-    console.log("url: ", url);
-    console.log("selected element: ", $('ul.nav a[href="'+ url +'"]'));
-    console.log("title: ", title);
+    var title = $(this).data('title'); // получаем значение атрибута "data-title"
     // изменяем заголовок страницы 
     document.title = title;
 
@@ -117,12 +113,8 @@ $(document).ready(function () {
     var url = urlParts.pop();
     var title = $('ul.nav a[href="'+ url +'"]').data('title');
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
-    console.log("url: ", url);
-    console.log("selected element: ", $('ul.nav a[href="'+ url +'"]'));
-    console.log("title: ", title);
-    console.log('document.title ', document.title);
     // изменяем заголовок страницы 
-    // document.title = title;
+    document.title = title;
      // Проверяем наличие сохраненных данных в кэше
      if (sessionStorage.getItem(cacheKey)) {
       // удаляем подсветку предыдущего элемента навигационного меню
@@ -130,7 +122,6 @@ $(document).ready(function () {
       // Если данные есть в кэше используем их
       var mainContent = $(sessionStorage.getItem(cacheKey)).filter('#mainContent').eq(0).html();
       $('#mainContent').html(mainContent);
-      console.log('Заголовок подгруженного контетнта ', document.title)
       timerElem = document.getElementById('timer');
       mapElem = document.getElementById('map');
 
