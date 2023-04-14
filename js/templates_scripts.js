@@ -36,6 +36,7 @@ $(document).ready(function () {
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     var title = $(this).data('title'); // получаем значение атрибута "data-title"
     var stateObj = { title: title };  
+    console.log('stateObj.title ', stateObj.title)
     // изменяем заголовок страницы 
     document.title = title;
 
