@@ -109,7 +109,7 @@ $(document).ready(function () {
     
   $(window).on('popstate', function(event) {
     var url = location.pathname;
-    var title = $('a[href="'+ url +'"]').data('title'); // получаем значение атрибута "data-title"
+    var title = event.state.title;
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     console.log('url ', url);
 
