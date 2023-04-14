@@ -112,6 +112,7 @@ $(document).ready(function () {
     var title = $('a[href="'+ url +'"]').data('title'); // получаем значение атрибута "data-title"
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
     console.log('url ', url);
+
     console.log('cacheKey ', cacheKey);
     console.log('title ', title);
     console.log('document.title ', document.title);
