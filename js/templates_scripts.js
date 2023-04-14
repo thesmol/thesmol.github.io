@@ -114,7 +114,7 @@ $(document).ready(function () {
     console.log('url ', url);
     console.log('cacheKey ', cacheKey);
     console.log('title ', title);
-    console.log('document.title ', title);
+    console.log('document.title ', document.title);
     // изменяем заголовок страницы 
     document.title = title;
      // Проверяем наличие сохраненных данных в кэше
