@@ -113,10 +113,10 @@ $(document).ready(function () {
     });
     
   $(window).on('popstate', function(event) {
-    var url = location.href;
+    var url = path.substr(path.lastIndexOf('/') + 1);;
     var title = $('ul.nav a[href="'+ url +'"]').data('title');
     var cacheKey = 'page_' + url; // Создаем ключ для кэша
-    console.log("location.href: ", url);
+    console.log("url: ", url);
     console.log("selected element: ", $('ul.nav a[href="'+ url +'"]'));
     console.log("title: ", title);
     console.log('document.title ', document.title);
