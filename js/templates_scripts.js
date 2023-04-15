@@ -190,8 +190,8 @@ function highlightCurrentPage() {
   if (url.endsWith('#') || url.endsWith('?')) {
       url = url.slice(0, -1);
   }
-  $('a[href="'+ url +'"]').parent().addClass('active'); 
-  $('a').filter(function() { 
+  $('ul.nav a[href="'+ url +'"]').parent().addClass('active'); 
+  $('ul.nav a').filter(function() { 
       return this.href == url; 
   }).parent().addClass('active'); 
 }
