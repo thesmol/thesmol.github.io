@@ -1,6 +1,13 @@
 *{
     font-family: 'Roboto', sans-serif;
 }
+#mobile{
+  display: none;
+}
+
+body{
+  min-width: 350px;
+}
 
 body .text-dark, body .text-black, body .link-dark {
   color: #505050!important;
@@ -144,4 +151,24 @@ form .btn-primary{
 
 #timer{
   min-height: 5em; 
+}
+
+
+.navbar-toggler:hover{
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+.offcanvas.offcanvas-start {
+  width: 250px!important;
+}
+
+@media (max-width: 767px) { 
+  #desktop{
+    display: none;
+  }
+  #mobile{
+    display: block;
+  }
+
 }
