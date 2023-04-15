@@ -185,15 +185,15 @@ $(document).ready(function () {
 
 
 // функция для подсветки выбранной страницы в меню навигации
-function highlightCurrentPage() {
+function highlightCurrentPage() { 
   var url = window.location.href;
   if (url.endsWith('#') || url.endsWith('?')) {
-    url = url.slice(0, -1);
+      url = url.slice(0, -1);
   }
-  $('ahref="'+ url +'"').parent().addClass('active');
-  $('a').filter(function() {
-    return this.href == url;
-  }).parent().addClass('active');
+  $('a[href="'+ url +'"]').parent().addClass('active'); 
+  $('a').filter(function() { 
+      return this.href == url; 
+  }).parent().addClass('active'); 
 }
 
 // функция для удаления подсветки выбранной страницы
