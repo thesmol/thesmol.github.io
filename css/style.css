@@ -1,0 +1,174 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+#mobile{
+  display: none;
+}
+
+body{
+  min-width: 350px;
+}
+
+body .text-dark, body .text-black, body .link-dark {
+  color: #505050!important;
+}
+
+/* header stuff */
+.user-pages{
+  font-size: 18px;
+}
+
+.nav-menu.nav-link, .nav-item {
+  font-size: 14px;
+}
+.nav-item:hover{
+    background-color:#eee;
+}
+
+.nav-menu:hover > .bi {
+    transform: scale(1.2); /* увеличение изображения */
+  }
+  
+.nav-menu:hover {
+    opacity: 0.7;
+  }
+
+.active{
+  background-color:#eee;
+}
+
+/* main stuff */
+.custom-bg {
+  background-color: #F1F1F1; /* change this color to your preferred background color */
+}
+
+/* right column*/
+body .list-group-item-action:hover {
+  background-color: #F1F1F1;
+}
+.btn-toggle[aria-expanded="true"]::after {
+  transform: rotate(270deg);
+}
+.btn-toggle[aria-expanded="false"]::after {
+  transform: rotate(90deg);
+}
+
+/* .dropdown-toggle { outline: 0; } */
+
+/* .btn-toggle {
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+} */
+/* .btn-toggle:hover, .btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: #d2f4ea;
+} */
+
+.btn-toggle::after {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+/* .btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+} */
+/* .scrollarea {
+  overflow-y: auto;
+} */
+
+div span{
+  display: block;
+}
+
+.profile-nm{
+  font-size: 18px!important;
+}
+
+.col-md-7 span {
+  font-size: 14px;
+}
+
+ul.sch-m {
+  --bs-nav-link-padding-x: 0.2rem;
+}
+
+.slide-btn{
+  font-size: 14px;
+}
+
+.btn.btn-toggle.justify-content-between {
+  text-align: start ;
+}
+
+form .btn-primary{
+  --bs-btn-bg: #5095EC;
+  font-size: 14px;
+}
+
+.form-control-sm{
+  border-color: #D3D8DE;
+  min-height: 10em!important;
+}
+
+.form-control-sm:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+
+/* left column */
+
+.col-md-9 .mb-4.pt-5.pb-2.px-4{
+  font-size: 14px;
+}
+
+.col-md-9 .text-dark.ms-2{
+  font-size: 16px;
+}
+
+/* map */
+
+#map{
+  min-height: 43em; 
+}
+
+.shut-the-loader{
+  display: none!important;
+}
+
+.btn:hover > .bi {
+  transform: scale(1.2); /* увеличение изображения */
+}
+
+/* timer */
+
+#timer{
+  min-height: 5em; 
+}
+
+
+.navbar-toggler:hover{
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+.offcanvas.offcanvas-start {
+  width: 250px!important;
+}
+
+@media (max-width: 767px) { 
+  #desktop{
+    display: none;
+  }
+  #mobile{
+    display: block;
+  }
+
+}
